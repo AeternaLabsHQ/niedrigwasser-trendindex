@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html data-i18n-attr="lang:doc.lang" lang="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="doc.title"></title>
+<style>
+/* ================= Design-Tokens ================= */
+:root {
+  color-scheme: light;
+  --page:        #f4f1e9;
+  --surface:     #fbf9f4;
+  --surface-2:   #f1ede2;
+  --ink:         #1d1a15;
+  --ink-2:       #57524a;
+  --muted:       #6f6a5e;   /* >=4,5:1 auf --page und --surface-2 (WCAG AA) */
+  --grid:        #e2ddcf;
+  --baseline:    #c6c0af;
+  --hairline:    rgba(29,26,21,0.12);
+  --accent:      #b4441f;   /* Rost — "trocken", steigender Trend */
+  --accent-ink:  #93370f;
+  --cool:        #2b6cb0;   /* Blau — fallender Trend */
+  --neutral-dot: #9c968a;   /* kein Trend */
+  --tile-num:    #93370f;
+  --tip-bg:      #26221c;
+  --tip-ink:     #f6f2e9;
+  --tip-rule:    rgba(246,242,233,0.22);
+  --focus:       #2b6cb0;
+  --dec-1:       #dfb68d;
+  --dec-2:       #c1703a;
+  --dec-3:       #8a3512;
+  --map-land:    #f0ecdf;  /* Basemap: Landesfläche */
+  --map-border:  rgba(29,26,21,0.16);  /* Basemap: Grenzen */
+  --map-river:   #a3c0d9;  /* Basemap: Flüsse */
+}
+:root[data-theme="dark"] { color-scheme: dark;
+  --page:#12100d; --surface:#1c1a16; --surface-2:#242118;
+  --ink:#f2eee4; --ink-2:#c4bead; --muted:#9b9584;
+  --grid:#2d2a23; --baseline:#46423a; --hairline:rgba(242,238,228,0.14);
+  --accent:#d4653a; --accent-ink:#e8895f; --cool:#4f8fd6; --neutral-dot:#6f6a60;
+  --tile-num:#e8895f; --tip-bg:#f2eee4; --tip-ink:#1d1a15; --focus:#4f8fd6;
+  --tip-rule:rgba(29,26,21,0.18);
+  --dec-1:#7a4a26; --dec-2:#c4763c; --dec-3:#f0a869;
+  --map-land:#211e18; --map-border:rgba(242,238,228,0.14); --map-river:#3c5f80;
+}
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) { color-scheme: dark;
+    --page:#12100d; --surface:#1c1a16; --surface-2:#242118;
+    --ink:#f2eee4; --ink-2:#c4bead; --muted:#9b9584;
+    --grid:#2d2a23; --baseline:#46423a; --hairline:rgba(242,238,228,0.14);
+    --accent:#d4653a; --accent-ink:#e8895f; --cool:#4f8fd6; --neutral-dot:#6f6a60;
+    --tile-num:#e8895f; --tip-bg:#f2eee4; --tip-ink:#1d1a15; --focus:#4f8fd6;
+    --tip-rule:rgba(29,26,21,0.18);
+    --dec-1:#7a4a26; --dec-2:#c4763c; --dec-3:#f0a869;
+    --map-land:#211e18; --map-border:rgba(242,238,228,0.14); --map-river:#3c5f80;
+  }
+}
+
+/* ================= Grundgerüst ================= */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--page); color: var(--ink);
+  font: 16px/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+h1, h2, .serif {
+  font-family: Georgia, "Iowan Old Style", Cambria, "Times New Roman", serif;
+  font-weight: 400; letter-spacing: -0.01em;
+}
+a { color: var(--accent-ink); }
+button { font: inherit; }
+
+section { padding: 56px 0 8px; }
+.sec-label {
+  display: flex; align-items: baseline; gap: 14px;
+  border-top: 1px solid var(--hairline); padding-top: 18px; margin-bottom: 6px;
+}
+.sec-label .no {
+  font: 600 12px/1 system-ui, sans-serif; letter-spacing: 0.16em;
+  color: var(--muted);
+}
+h2 { font-size: clamp(24px, 3.4vw, 32px); margin: 0 0 6px; }
+.lede { color: var(--ink-2); max-width: 62ch; margin: 4px 0 26px; }
+
+/* ================= Kopf ================= */
+header.hero { padding: 64px 0 30px; }
+.kicker {
+  font: 600 12px/1 system-ui, sans-serif; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--accent-ink); margin-bottom: 18px;
+}
+h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.08; margin: 0 0 18px; max-width: 18ch; }
+.sub { font-size: clamp(17px, 2.2vw, 20px); color: var(--ink-2); max-width: 58ch; margin: 0 0 40px; }
+.tiles { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 14px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 10px; padding: 20px 20px 16px; position: relative; overflow: hidden;
+}
+.tile::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--accent);
+  opacity: 0.85;
+}
+.tile .num {
+  font-family: Georgia, Cambria, serif; font-size: clamp(26px, 3.6vw, 40px);
+  line-height: 1.1; color: var(--tile-num); font-variant-numeric: tabular-nums;
+}
+.tile .num small { font-size: 60%; color: var(--ink-2); }
+.tile .lbl { color: var(--ink-2); font-size: 13.5px; margin-top: 6px; line-height: 1.45; }
+.tile .klbl {
+  font: 600 11px/1 system-ui, sans-serif; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent-ink); margin-bottom: 10px;
+}
+.tile-hero { background: var(--surface-2); }
+.tile-hero .num-hero { font-size: clamp(38px, 5.4vw, 62px); }
+.tile-hero .lbl b { color: var(--ink); }
+@media (max-width: 720px) { .tiles { grid-template-columns: 1fr; } }
+
+/* ================= Chart-Gehäuse ================= */
+.panel {
+  background: var(--surface); border: 1px solid var(--hairline);
+  border-radius: 12px; padding: 18px 18px 14px; margin: 8px 0 14px;
+}
+.scroller { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.hint { color: var(--muted); font-size: 13px; margin: 8px 2px 0; }
+.readaid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0 8px; }
+.readaid div {
+  border-top: 3px solid var(--accent); padding-top: 10px; font-size: 14px; color: var(--ink-2);
+}
+.readaid b { color: var(--ink); display: block; margin-bottom: 2px; font-weight: 600; }
+@media (max-width: 720px) { .readaid { grid-template-columns: 1fr; } }
+
+.relevance {
+  background: var(--surface-2); border: 1px solid var(--hairline); border-left: 4px solid var(--accent);
+  border-radius: 10px; padding: 18px 22px; margin: 26px 0 8px;
+}
+.relevance h3 {
+  font: 600 12px/1.3 system-ui, sans-serif; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-ink); margin: 0 0 8px;
+}
+.relevance p { margin: 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.65; max-width: 84ch; }
+
+/* Heatmap */
+#hm-canvas { display: block; cursor: crosshair; }
+#hm-canvas:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.legend-grad { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 12.5px; color: var(--ink-2); flex-wrap: wrap; }
+#hm-gradbar { width: 180px; height: 10px; border-radius: 5px; border: 1px solid var(--hairline); }
+
+/* Tooltip — eine Familie fuer Heatmap, Zeitreihe, Karte und .info-Begriffe:
+   Kopf (fett) · Unterzeile (gedaempft) · darunter entweder EIN Kennwert (.t-val)
+   oder Label/Wert-Zeilen (.t-rows, dieselbe dl-Grammatik wie die MK-Karte).
+   Werte bleiben als Einheit stehen — "Signifikant steigend" oder "+3,00 Tage/Jahr"
+   duerfen nicht in der Mitte umbrechen. Nur .info-Erklaerungen sind Fliesstext. */
+#tip {
+  position: fixed; z-index: 50; pointer-events: none; display: none;
+  background: var(--tip-bg); color: var(--tip-ink);
+  border-radius: 8px; padding: 9px 12px; font-size: 12.5px; line-height: 1.5;
+  max-width: 320px; box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  font-variant-numeric: tabular-nums;
+}
+#tip .t-head { font-weight: 600; line-height: 1.35; }
+#tip .t-sub { opacity: 0.72; line-height: 1.35; }
+#tip .t-dim { opacity: 0.72; font-weight: 400; }
+#tip .t-val { margin-top: 6px; font-weight: 600; white-space: nowrap; }
+#tip .t-rows { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 6px 0 0; }
+#tip .t-rows dt { opacity: 0.72; white-space: nowrap; }
+#tip .t-rows dd { margin: 0; font-weight: 600; white-space: nowrap; }
+/* Trendaussage traegt denselben Farbcode wie der Punkt auf der Karte */
+#tip .t-trend { display: flex; align-items: center; gap: 7px; }
+/* Hairline-Ring: die Trendfarben stehen auf der invertierten Tooltip-Flaeche
+   sonst zu dicht am Untergrund (Rost ~2,9:1 auf dem dunklen Tooltip). */
+#tip .dot { width: 10px; height: 10px; border: 1px solid var(--tip-rule); }
+#tip .t-foot {
+  margin-top: 7px; padding-top: 6px; border-top: 1px solid var(--tip-rule); opacity: 0.72;
+}
+
+/* Umschalter */
+.controls { display: flex; flex-wrap: wrap; gap: 10px; margin: 0 0 14px; }
+.seg { display: inline-flex; border: 1px solid var(--hairline); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button {
+  border: 0; background: transparent; color: var(--ink-2); padding: 7px 14px;
+  cursor: pointer; font-size: 13.5px; border-right: 1px solid var(--hairline);
+}
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+:root[data-theme="dark"] .seg button[aria-pressed="true"] { color: #12100d; }
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .seg button[aria-pressed="true"] { color: #12100d; }
+}
+.seg button:focus-visible, .toggle:focus-visible, #theme-btn:focus-visible, .info:focus-visible {
+  outline: 2px solid var(--focus); outline-offset: 2px;
+}
+.explain { color: var(--ink-2); font-size: 13.5px; max-width: 74ch; margin: 0 0 14px; line-height: 1.55; }
+.explain b { color: var(--ink); font-weight: 600; }
+.info { border-bottom: 1px dotted var(--muted); cursor: help; }
+
+/* Zeitreihe + MK-Karte */
+.ts-grid { display: grid; grid-template-columns: 1fr 280px; gap: 14px; align-items: start; }
+.ts-grid > * { min-width: 0; } /* sonst erzwingt das SVG Layoutbreite und #ts-scroll scrollt nie */
+/* Fokus der einzelnen Saeulen: outline wird nicht von allen Engines auf SVG-Kindern
+   gezeichnet, daher zusaetzlich ein Stroke in derselben Fokusfarbe. */
+#ts-svg rect:focus-visible {
+  outline: 2px solid var(--focus); outline-offset: 2px;
+  stroke: var(--focus); stroke-width: 2;
+}
+@media (max-width: 900px) { .ts-grid { grid-template-columns: 1fr; } }
+.mk-card {
+  background: var(--surface-2); border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 20px; font-size: 14.5px;
+}
+.mk-card .dir {
+  font-family: Georgia, Cambria, serif; font-size: 24px; color: var(--tile-num);
+  margin: 2px 0 10px; line-height: 1.2;
+}
+.mk-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; }
+.mk-card dt { color: var(--muted); }
+.mk-card dd { margin: 0; font-variant-numeric: tabular-nums; }
+.mk-card .note { color: var(--muted); font-size: 12.5px; margin-top: 12px; border-top: 1px solid var(--hairline); padding-top: 10px; }
+#sel-note { font-size: 13px; color: var(--ink-2); margin-top: 8px; min-height: 1.4em; }
+#sel-note button { border: 0; background: none; color: var(--accent-ink); cursor: pointer; text-decoration: underline; padding: 0; }
+
+svg text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+
+/* Karte */
+.map-flex { display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start; justify-content: center; }
+.map-flex .scroller { flex: 0 1 520px; min-width: 0; }
+.map-flex .map-legend { flex: 0 0 240px; }
+
+/* Stationssuche */
+.map-search { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 2px 0 16px; }
+.map-search label { font: 600 13px/1 system-ui, sans-serif; color: var(--ink-2); }
+.search-wrap { position: relative; flex: 1 1 260px; max-width: 380px; }
+#st-search {
+  width: 100%; padding: 8px 12px; font: inherit; font-size: 14px;
+  color: var(--ink); background: var(--surface-2);
+  border: 1px solid var(--hairline); border-radius: 8px;
+}
+#st-search::placeholder { color: var(--muted); }
+#st-search:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
+#st-suggest {
+  position: absolute; top: calc(100% + 4px); left: 0; right: 0; z-index: 30;
+  margin: 0; padding: 4px; list-style: none;
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.22); max-height: 300px; overflow-y: auto;
+}
+#st-suggest li { padding: 7px 10px; border-radius: 6px; cursor: pointer; font-size: 13.5px; color: var(--ink); }
+#st-suggest li .riv { color: var(--muted); }
+#st-suggest li.active, #st-suggest li:hover { background: var(--surface-2); }
+#st-suggest li.active { outline: 2px solid var(--focus); outline-offset: -2px; }
+#st-suggest .none { color: var(--muted); cursor: default; }
+
+/* Stations-Detailansicht */
+.st-detail {
+  border-top: 1px solid var(--hairline); margin-top: 20px; padding-top: 16px;
+  display: flex; flex-wrap: wrap; gap: 10px 32px; align-items: flex-start;
+  position: relative; padding-right: 40px;
+}
+.st-detail .st-info { flex: 1 1 280px; min-width: 0; }
+.st-detail .st-spark { flex: 0 1 380px; min-width: 0; }
+.st-detail h3 {
+  font-family: Georgia, "Iowan Old Style", Cambria, serif; font-weight: 400;
+  font-size: 22px; margin: 0 0 2px; color: var(--ink);
+}
+.st-detail h3:focus { outline: none; }
+.st-detail .st-meta { color: var(--ink-2); font-size: 13.5px; margin: 0 0 10px; }
+.st-detail .st-trend { font-size: 14.5px; margin: 0 0 6px; color: var(--ink); max-width: 52ch; }
+.st-detail .st-min { color: var(--ink-2); font-size: 13.5px; margin: 0; }
+.st-badge {
+  display: inline-block; font: 600 11px/1 system-ui, sans-serif; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--accent-ink); border: 1px solid var(--accent-ink);
+  border-radius: 999px; padding: 3px 8px; vertical-align: 1px; margin-left: 8px;
+}
+.st-close {
+  position: absolute; top: 14px; right: 0;
+  border: 1px solid var(--hairline); background: var(--surface-2); color: var(--ink-2);
+  border-radius: 999px; width: 28px; height: 28px; cursor: pointer; font-size: 15px; line-height: 1;
+}
+.st-close:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.st-spark .cap { color: var(--muted); font-size: 12px; margin: 4px 0 0; }
+.map-legend { font-size: 13.5px; color: var(--ink-2); }
+.map-legend .row { display: flex; align-items: center; gap: 9px; margin: 7px 0; }
+.dot { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto; }
+.toggle { display: flex; align-items: center; gap: 8px; margin-top: 16px; cursor: pointer; user-select: none; }
+.toggle input { accent-color: var(--accent); width: 16px; height: 16px; }
+#map-svg circle { cursor: pointer; transition: opacity 0.15s; }
+
+/* Methodik */
+.method { columns: 2 300px; column-gap: 40px; font-size: 14.5px; color: var(--ink-2); }
+.method h3 {
+  font: 600 13px/1.3 system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink); break-after: avoid; margin: 0 0 6px;
+}
+.method p { break-inside: avoid; margin: 0 0 20px; }
+.method .src { font-size: 13px; color: var(--muted); }
+
+footer { border-top: 1px solid var(--hairline); margin-top: 48px; padding: 22px 0 40px; color: var(--muted); font-size: 13px; }
+
+/* Theme-Umschalter */
+#theme-btn {
+  position: fixed; top: 14px; right: 14px; z-index: 40;
+  border: 1px solid var(--hairline); background: var(--surface); color: var(--ink-2);
+  border-radius: 999px; padding: 6px 13px; font-size: 12.5px; cursor: pointer;
+}
+@media (max-width: 720px) {
+  /* schmal: in den Flow, damit der Button keinen Text ueberdeckt */
+  #theme-btn { position: static; display: block; margin: 14px 20px 0 auto; }
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+</style>
+</head>
+<body>
+
+<script id="nw-text" type="application/json">/*__TEXT__*/</script>
+<script id="nw-data" type="application/json">/*__DATA__*/</script>
+<script id="nw-geo" type="application/json">/*__GEO__*/</script>
+
+<button id="theme-btn" type="button" aria-live="polite" data-i18n="kopf.design"></button>
+<div id="tip" role="tooltip"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker" data-i18n="hero.kicker"></div>
+    <h1 data-i18n="hero.h1"></h1>
+    <p class="sub" data-i18n="hero.sub"></p>
+    <div class="tiles">
+      <div class="tile tile-hero">
+        <div class="klbl" data-i18n="hero.tile.median.titel"></div>
+        <div class="num num-hero" id="k-median">…</div>
+        <div class="lbl" data-i18n="hero.tile.median.text"></div>
+      </div>
+      <div class="tile">
+        <div class="num" id="k-share">…</div>
+        <div class="lbl" data-i18n="hero.tile.trend.text"></div>
+      </div>
+      <div class="tile">
+        <div class="num" id="k-coverage">…</div>
+        <div class="lbl" data-i18n="hero.tile.flaeche.text"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section id="sec-heatmap">
+  <div class="sec-label"><span class="no">02</span><h2 data-i18n="heatmap.h2"></h2></div>
+  <p class="lede" data-i18n="heatmap.lede"></p>
+  <div class="panel">
+    <div class="scroller"><canvas id="hm-canvas"></canvas></div>
+    <div class="legend-grad">
+      <span data-i18n="heatmap.legende.titel"></span>
+      <span data-i18n="heatmap.legende.min"></span><canvas id="hm-gradbar" width="180" height="10"></canvas><span data-i18n="heatmap.legende.max"></span>
+      <span style="margin-left:auto" data-i18n="heatmap.legende.hinweis"></span>
+    </div>
+    <p class="hint" id="hm-nethint"></p>
+  </div>
+  <div class="readaid">
+    <div data-i18n="heatmap.readaid.beginn"></div>
+    <div data-i18n="heatmap.readaid.dauer"></div>
+    <div data-i18n="heatmap.readaid.flaeche"></div>
+  </div>
+
+  <aside class="relevance" data-i18n-attr="aria-label:heatmap.relevanz.aria" aria-label="">
+    <h3 data-i18n="heatmap.relevanz.h3"></h3>
+    <p data-i18n="heatmap.relevanz.text"></p>
+  </aside>
+</section>
+
+<section id="sec-index">
+  <div class="sec-label"><span class="no">03</span><h2 data-i18n="index.h2"></h2></div>
+  <p class="lede" data-i18n="index.lede1"></p>
+  <p class="lede" data-i18n="index.lede2"></p>
+  <div class="controls">
+    <div class="seg" role="group" data-i18n-attr="aria-label:index.gruppe.stationen.aria" aria-label="">
+      <button type="button" data-variant="primary" aria-pressed="true" data-i18n="index.variante.primaer"></button>
+      <button type="button" data-variant="natural" aria-pressed="false" data-i18n="index.variante.naturnah"></button>
+    </div>
+    <div class="seg" role="group" data-i18n-attr="aria-label:index.gruppe.kennzahl.aria" aria-label="">
+      <button type="button" data-metric="days" aria-pressed="true" data-i18n="index.kennzahl.tage"></button>
+      <button type="button" data-metric="deficit" aria-pressed="false" data-i18n="index.kennzahl.defizit"></button>
+      <button type="button" data-metric="ssi" aria-pressed="false" data-i18n="index.kennzahl.ssi"></button>
+    </div>
+  </div>
+  <p class="explain" id="ts-explain" aria-live="polite"></p>
+  <div class="ts-grid">
+    <div class="panel">
+      <div class="scroller" id="ts-scroll"></div>
+      <div id="sel-note"></div>
+    </div>
+    <aside class="mk-card" id="mk-card" aria-live="polite"></aside>
+  </div>
+</section>
+
+<section id="sec-decades">
+  <div class="sec-label"><span class="no">04</span><h2 data-i18n="dekaden.h2"></h2></div>
+  <p class="lede" data-i18n="dekaden.lede"></p>
+  <div class="panel">
+    <div class="scroller" id="ridge-holder"></div>
+    <p class="hint" data-i18n="dekaden.hinweis"></p>
+  </div>
+</section>
+
+<section id="sec-map">
+  <div class="sec-label"><span class="no">05</span><h2 data-i18n="karte.h2"></h2></div>
+  <p class="lede" data-i18n="karte.lede"></p>
+  <div class="panel">
+    <div class="map-search">
+      <label for="st-search" data-i18n="karte.suche.label"></label>
+      <div class="search-wrap">
+        <input id="st-search" type="text" role="combobox" aria-expanded="false"
+               aria-controls="st-suggest" aria-autocomplete="list" autocomplete="off"
+               spellcheck="false" data-i18n-attr="placeholder:karte.suche.platzhalter" placeholder="">
+        <ul id="st-suggest" role="listbox" data-i18n-attr="aria-label:karte.suche.treffer.aria" aria-label="" hidden></ul>
+      </div>
+    </div>
+    <p class="visually-hidden" data-i18n="karte.a11y.hinweis"></p>
+    <div class="map-flex">
+      <div class="scroller"><svg id="map-svg" role="img" data-i18n-attr="aria-label:karte.svg.aria" aria-label=""></svg></div>
+      <div class="map-legend" id="map-legend"></div>
+    </div>
+    <div id="st-detail" class="st-detail" role="region" data-i18n-attr="aria-label:karte.detail.aria" aria-label="" hidden></div>
+  </div>
+</section>
+
+<section id="sec-method">
+  <div class="sec-label"><span class="no">06</span><h2 data-i18n="methodik.h2"></h2></div>
+  <div class="method">
+    <h3 data-i18n="methodik.daten.h3"></h3>
+    <p data-i18n="methodik.daten.text"></p>
+    <h3 data-i18n="methodik.schwellenwert.h3"></h3>
+    <p data-i18n="methodik.schwellenwert.text"></p>
+    <h3 data-i18n="methodik.gewichtung.h3"></h3>
+    <p data-i18n="methodik.gewichtung.text"></p>
+    <h3 data-i18n="methodik.national.h3"></h3>
+    <p data-i18n="methodik.national.text"></p>
+    <h3 data-i18n="methodik.trendtest.h3"></h3>
+    <p data-i18n="methodik.trendtest.text"></p>
+    <h3 data-i18n="methodik.multiplizitaet.h3"></h3>
+    <p data-i18n="methodik.multiplizitaet.text"></p>
+    <h3 data-i18n="methodik.extremwerte.h3"></h3>
+    <p data-i18n="methodik.extremwerte.text"></p>
+    <h3 data-i18n="methodik.grenzen.h3"></h3>
+    <p data-i18n="methodik.grenzen.text"></p>
+    <h3 data-i18n="methodik.repro.h3"></h3>
+    <p class="src" data-i18n="methodik.repro.text"></p>
+  </div>
+</section>
+
+</main>
+
+<footer><div class="wrap" data-i18n="fuss.quelle"></div></footer>
+
+<script>
+(function () {
+"use strict";
+
+/* ---------- Daten ---------- */
+var raw = document.getElementById("nw-data").textContent.trim();
+/* Der Bau-Hinweis kann als einziger Text nicht aus dem Katalog kommen: er
+   erscheint genau dann, wenn die Marker noch stehen — dann ist auch der
+   Katalog-Blob ungefuellt und t() gaebe es nicht. Er bleibt deutsch wie jeder
+   andere entwicklerseitige Text dieses Repos; der Waechter in
+   tests/test_i18n.py fuehrt ihn als seine einzige namentliche Ausnahme. */
+if (raw.indexOf("__DATA__") !== -1) {
+  document.body.insertAdjacentHTML("afterbegin",
+    '<p style="padding:20px;font-family:monospace">template.html ist die ungebaute Vorlage: bitte scripts/build_site.py ausführen und site/index.html öffnen.</p>');
+  return;
+}
+var D = JSON.parse(raw);
+
+/* Sprachkatalog + Locale-Formatierung (siehe niedrigwasser.i18n) */
+var T = JSON.parse(document.getElementById("nw-text").textContent.trim());
+var L = T.LOCALE;
+/* Textnachschlag. Ein fehlender Schluessel wirft — dieselbe Fail-Loud-Linie wie
+   im Build, statt einer stillen 'undefined' mitten im Satz. Platzhalter sind
+   benannt ({jahr}, {anteil}, ...), damit Uebersetzungen die Wortstellung frei
+   waehlen koennen.
+
+   Ein Durchgang ueber die Platzhalter des Musters, NICHT ueber die uebergebenen
+   Werte. Das haelt drei Fallen zu:
+     - Ein Platzhalter ohne Wert wirft, statt sichtbar stehenzubleiben.
+     - Ein eingesetzter Wert wird nicht erneut durchsucht; eine Schleife ueber
+       die Werte arbeitet auf dem schon ersetzten String weiter.
+     - Kein split/join: Array.join(undefined) faellt laut Spezifikation auf ","
+       zurueck und schriebe bei fehlendem Wert ein Komma in den Text.
+   Das Muster ist dasselbe wie RE_PLATZHALTER in niedrigwasser.i18n, damit Build
+   und Laufzeit denselben Platzhalterbegriff haben. */
+function t(schluessel, werte) {
+  var s = T.TEXTE[schluessel];
+  if (s === undefined) throw new Error("Textschluessel fehlt: " + schluessel);
+  var vorrat = werte || {};
+  return s.replace(/\{(\w+)\}/g, function (ganz, name) {
+    if (!Object.prototype.hasOwnProperty.call(vorrat, name)) {
+      throw new Error("Platzhalter ohne Wert: " + schluessel + " {" + name + "}");
+    }
+    return vorrat[name];
+  });
+}
+
+/* Basemap-Geometrie (Natural Earth) — optional, leeres Objekt = keine Basemap */
+var G = {};
+(function () {
+  var el = document.getElementById("nw-geo");
+  if (!el) return;
+  var roh = el.textContent.trim();
+  if (roh && roh.indexOf("__GEO__") === -1) {
+    try { G = JSON.parse(roh); } catch (e) { G = {}; }
+  }
+})();
+
+/* ---------- Format-Helfer (de-DE, ohne Intl-Überraschungen) ---------- */
+function fmt(x, dec) {
+  if (x === null || x === undefined) return "–";
+  var s = x.toFixed(dec === undefined ? 1 : dec);
+  var parts = s.split(".");
+  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, L.thousands);
+  s = parts.length > 1 ? parts[0] + L.decimal + parts[1] : parts[0];
+  return s.replace("-", "−"); /* echtes Minuszeichen */
+}
+function fmtP(p) { return p < 0.001 ? L.pLessValue : fmt(p, 4); }
+function pText(p) { return p < 0.001 ? L.pLess : "p = " + fmt(p, 4); }
+
+/* ---------- Theme ---------- */
+var mq = window.matchMedia("(prefers-color-scheme: dark)");
+function isDark() {
+  var modus = document.documentElement.getAttribute("data-theme");
+  if (modus === "dark") return true;
+  if (modus === "light") return false;
+  return mq.matches;
+}
+var themeBtn = document.getElementById("theme-btn");
+var themeOrder = ["auto", "light", "dark"];
+/* Die Beschriftung traegt das Wort "Design" mit: nicht jede Sprache stellt es
+   voran, deshalb ein Schluessel je Zustand statt Praefix + Name. */
+var themeNames = {
+  auto: t("kopf.design.auto"),
+  light: t("kopf.design.hell"),
+  dark: t("kopf.design.dunkel")
+};
+var themeState = "auto";
+themeBtn.addEventListener("click", function () {
+  themeState = themeOrder[(themeOrder.indexOf(themeState) + 1) % 3];
+  if (themeState === "auto") document.documentElement.removeAttribute("data-theme");
+  else document.documentElement.setAttribute("data-theme", themeState);
+  themeBtn.textContent = themeNames[themeState];
+  redrawCanvases();
+});
+if (mq.addEventListener) mq.addEventListener("change", redrawCanvases);
+
+/* ---------- Tooltip ---------- */
+var tip = document.getElementById("tip");
+/* Element, das den Tooltip gerade per aria-describedby als Beschreibung fuehrt.
+   Gesetzt wird es von allen element-verankerten Pfaden (Zeitreihen-Saeulen,
+   Heatmap-Canvas, .info-Begriffe) — auch wenn sie per Maus ausgeloest werden.
+   Die zeiger-verankerten Tooltips (Heatmap-Zellen, Karte, Zeitreihen-Hover)
+   uebergeben kein Element; dort bleibt tipOwner null. */
+var tipOwner = null;
+/* Ein element-verankerter Tooltip klebt an seinem Element statt am Zeiger und
+   muss beim Scrollen mitwandern (z. B. wenn selectYear zur Zeitreihe springt).
+   Die zeiger-verankerten Pfade setzen kein tipRefresh und bleiben unveraendert. */
+var tipRefresh = null;
+function anchorTip(el, fn) {
+  fn();
+  tipRefresh = function () {
+    /* Ein Container-Re-Render (MK-Karte umschalten, andere Station waehlen) kann
+       den Anker aus dem DOM nehmen. getBoundingClientRect lieferte dann Nullen
+       und der Tooltip spraenge in die linke obere Ecke — also lieber schliessen.
+       Engines ohne isConnected (undefined) laufen wie bisher weiter. */
+    if (el && el.isConnected === false) { hideTip(); return; }
+    fn();
+  };
+}
+function setTipOwner(el) {
+  if (tipOwner && tipOwner !== el) tipOwner.removeAttribute("aria-describedby");
+  tipOwner = el || null;
+  if (tipOwner) tipOwner.setAttribute("aria-describedby", "tip");
+}
+function showTip(html, x, y, el) {
+  tip.innerHTML = html;
+  tip.style.display = "block";
+  var w = tip.offsetWidth, h = tip.offsetHeight;
+  var px = x + 14, py = y + 14;
+  if (px + w > window.innerWidth - 8) px = x - w - 14;
+  if (py + h > window.innerHeight - 8) py = y - h - 14;
+  tip.style.left = Math.max(4, px) + "px";
+  tip.style.top = Math.max(4, py) + "px";
+  if (!el) tipRefresh = null;
+  setTipOwner(el);
+}
+function hideTip() { tip.style.display = "none"; tipRefresh = null; setTipOwner(null); }
+window.addEventListener("scroll", function () { if (tipRefresh) tipRefresh(); }, { passive: true });
+/* WCAG 1.4.13: Ein per Hover oder Fokus eingeblendeter Tooltip muss sich ohne
+   Zeigerbewegung schliessen lassen. */
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" || e.key === "Esc") hideTip();
+});
+
+/* ---------- Kopf-Kennzahlen ---------- */
+var med = D.decades.stats.median;
+document.getElementById("k-median").innerHTML =
+  fmt(med[0], 0) + " <small>→</small> " + fmt(med[2], 0) + " <small>" + t("kennzahl.median.einheit") + "</small>";
+document.getElementById("k-median-detail").textContent =
+  t("kennzahl.median.detail", { aelteste: fmt(med[0], 0), mittlere: fmt(med[1], 0), juengste: fmt(med[2], 0) });
+document.getElementById("k-dec-labels").textContent = D.decades.labels.join(", ");
+var nSig = 0, nSt = D.stations.length;
+D.stations.forEach(function (s) { if (s.days_trend === "increasing" && s.days_p < 0.05) nSig++; });
+document.getElementById("k-share").innerHTML = fmt(100 * nSig / nSt, 0) + "<small>" + L.percentSpaceBreaking + "%</small>";
+document.getElementById("k-ntrend").textContent = fmt(nSt, 0);
+document.getElementById("k-coverage").innerHTML = fmt(D.meta.coverage_km2 / 1000, 0) + "<small>" + t("kennzahl.flaeche.einheit") + "</small>";
+document.getElementById("k-nprimary").textContent = fmt(D.meta.n_stations_primary, 0);
+/* Auslandsanteil der Gewichtungsmasse: Zahl kommt aus meta (config/basin_domestic_area.csv),
+   Formulierung haengt daran, ob es sich um eine untere Schranke handelt. */
+var foreignTsd = fmt(D.meta.coverage_foreign_km2 / 1000, 0);
+var foreignPct = fmt(100 * D.meta.coverage_foreign_km2 / D.meta.coverage_km2, 0);
+var foreignAbs = fmt(D.meta.coverage_foreign_km2, 0);
+var foreignUntergrenze = D.meta.coverage_foreign_is_lower_bound;
+document.getElementById("k-foreign").innerHTML = foreignUntergrenze
+  ? t("kennzahl.ausland.mindestens", { wert: foreignTsd })
+  : t("kennzahl.ausland.circa", { wert: foreignTsd });
+document.getElementById("m-cov-min").textContent = fmt(D.meta.coverage_km2_min, 0);
+document.getElementById("m-cov-max").textContent = fmt(D.meta.coverage_km2, 0);
+document.getElementById("m-foreign").textContent = foreignUntergrenze
+  ? t("methodik.ausland.mindestens", { wert: foreignAbs })
+  : foreignAbs;
+document.getElementById("m-foreign-pct").textContent = foreignPct;
+document.getElementById("k-stations-inline").textContent =
+  t("kennzahl.stationen.bisZu", { anzahl: fmt(D.meta.n_stations_primary, 0) });
+document.getElementById("dec-med-inline").textContent =
+  t("dekaden.median.inline", { aelteste: fmt(med[0], 0), mittlere: fmt(med[1], 0), juengste: fmt(med[2], 0) });
+document.getElementById("foot-meta").textContent =
+  t("fuss.stand", {
+    datum: D.meta.generated.slice(0, 10),
+    von: D.meta.window[0],
+    bis: D.meta.window[1]
+  });
+
+/* ---------- Multiplizitaets-Korrektur (Methodik-Absatz) ---------- */
+/* Benjamini-Hochberg-FDR: roh vs. korrigiert. Alle Zahlen zur Laufzeit aus
+   D.stations gezaehlt, nichts hartkodiert. */
+function sigAt(p) { return p !== null && p !== undefined && p < 0.05; }
+var fdrDaysRaw = 0, fdrDaysAdj = 0, fdrNm7qRaw = 0, fdrNm7qAdj = 0;
+D.stations.forEach(function (s) {
+  if (s.days_trend === "increasing" && sigAt(s.days_p)) {
+    fdrDaysRaw++;
+    if (sigAt(s.days_p_fdr)) fdrDaysAdj++;
+  }
+  if (s.nm7q_trend === "decreasing" && sigAt(s.nm7q_p)) {
+    fdrNm7qRaw++;
+    if (sigAt(s.nm7q_p_fdr)) fdrNm7qAdj++;
+  }
+});
+document.getElementById("fdr-n-total").textContent = fmt(nSt, 0);
+document.getElementById("fdr-days-raw").textContent = fmt(fdrDaysRaw, 0);
+document.getElementById("fdr-days-adj").textContent = fmt(fdrDaysAdj, 0);
+document.getElementById("fdr-nm7q-raw").textContent = fmt(fdrNm7qRaw, 0);
+document.getElementById("fdr-nm7q-adj").textContent = fmt(fdrNm7qAdj, 0);
+
+/* ---------- Wasserjahr-Kalender ---------- */
+/* Monatslaengen in der Reihenfolge des Wasserjahrs (0 = November, ... 11 = Oktober);
+   Index 3 (Februar) wird unten immer durch febLen ersetzt, sein Eintrag hier ist
+   also nur Platzhalter. MONTH_IDX bildet dieselbe Position auf den Kalendermonat
+   ab (0 = Januar in L.months bzw. L.monthsDate), 0 = November -> Index 10. */
+var MONTH_LEN = [30, 31, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31];
+var MONTH_IDX = [10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var MONTH_NAMES = MONTH_IDX.map(function (idx) { return L.months[idx]; });
+var monthStart = [0]; MONTH_LEN.forEach(function (len) { monthStart.push(monthStart[monthStart.length - 1] + len); });
+/* Datums-Label jahresspezifisch: In Schalt-Wasserjahren (Feb des Kalenderjahrs
+   wy hat 29 Tage; 1992-2025 reicht wy % 4 === 0) verschieben sich die doy ab
+   1. Maerz um 1; der letzte Spaltenindex traegt die upstream auf Tag 365
+   gefalteten 30.+31. Okt. (siehe daily_share.py). */
+function dayLabel(doy, wy) { /* doy: 0..364, Wasserjahr beginnt im November */
+  var leap = wy % 4 === 0;
+  if (leap && doy === 364) {
+    return L.dateRange.replace("{a}", 30).replace("{b}", 31).replace("{m}", L.monthsDate[9]);
+  }
+  var febLen = leap ? 29 : 28, cum = 0;
+  for (var i = 0; i < 12; i++) {
+    var len = i === 3 ? febLen : MONTH_LEN[i];
+    if (doy < cum + len) {
+      return L.dateFormat.replace("{d}", doy - cum + 1).replace("{m}", L.monthsDate[MONTH_IDX[i]]);
+    }
+    cum += len;
+  }
+  return "";
+}
+
+/* ---------- Heatmap-Farbrampe ---------- */
+var RAMP_LIGHT = [[0, "#f3eee1"], [0.25, "#e6c795"], [0.5, "#cd8347"], [0.72, "#a54a1b"], [1, "#5c1c08"]];
+var RAMP_DARK  = [[0, "#211e18"], [0.25, "#5e3413"], [0.5, "#a05620"], [0.72, "#d98a41"], [1, "#ffcf9c"]];
+function hex2rgb(h) { return [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)]; }
+function rampColor(v, dark) {
+  var stops = dark ? RAMP_DARK : RAMP_LIGHT;
+  if (v <= 0) return stops[0][1];
+  for (var i = 1; i < stops.length; i++) {
+    if (v <= stops[i][0]) {
+      var a = hex2rgb(stops[i - 1][1]), b = hex2rgb(stops[i][1]);
+      var anteil = (v - stops[i - 1][0]) / (stops[i][0] - stops[i - 1][0]);
+      return "rgb(" + Math.round(a[0] + (b[0] - a[0]) * anteil) + "," +
+        Math.round(a[1] + (b[1] - a[1]) * anteil) + "," + Math.round(a[2] + (b[2] - a[2]) * anteil) + ")";
+    }
+  }
+  return stops[stops.length - 1][1];
+}
+/* CSS Custom Properties werden vererbt, deshalb wird hier an einem Element
+   INNERHALB des Inhalts gelesen und nicht an :root. In der eingebetteten
+   Fassung liegen die Variablen auf dem Wrapper .nw-root, nicht auf :root; ein
+   Lesen an document.documentElement lieferte dort den leeren String. Eine
+   ungueltige fillStyle/strokeStyle-Zuweisung wird von Canvas still verworfen,
+   der vorherige Wert blieb stehen -- sichtbar als grauer Canvas-Hintergrund
+   ohne Jahres- und Monatsbeschriftung. hmCanvas erbt in beiden Fassungen
+   richtig; isDark() liest weiter an :root, denn das data-theme-Attribut sitzt
+   dort in beiden Fassungen. */
+function cssVar(name) { return getComputedStyle(hmCanvas).getPropertyValue(name).trim(); }
+
+/* ---------- Heatmap ---------- */
+var HM = D.heatmap, NY = HM.years.length, ND = 365;
+var hmCanvas = document.getElementById("hm-canvas");
+var CELL_H = 13, PADL = 46, PADT = 8, PADB = 26, PADR = 8;
+var CELL_W = 2, hmW = 0, hmH = 0;
+var dpr = Math.min(2, window.devicePixelRatio || 1);
+
+function layoutHeatmap() {
+  var avail = (hmCanvas.parentElement.clientWidth || 1000) - PADL - PADR;
+  CELL_W = Math.max(2, Math.floor((avail / ND) * 4) / 4);
+  hmW = PADL + ND * CELL_W + PADR;
+  hmH = PADT + NY * CELL_H + PADB;
+  hmCanvas.width = hmW * dpr; hmCanvas.height = hmH * dpr;
+  hmCanvas.style.width = hmW + "px"; hmCanvas.style.height = hmH + "px";
+}
+
+var selectedYear = null;
+/* Tastatur-Navigation der Heatmap: hmRow ist die angesteuerte Jahres-Zeile,
+   hmKeyNav schaltet den sichtbaren Fokus-Marker im Canvas ein. */
+var hmRow = 0, hmKeyNav = false, hmBaseLabel = "";
+
+function drawHeatmap() {
+  var ctx = hmCanvas.getContext("2d");
+  var dark = isDark();
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, hmW, hmH);
+  ctx.fillStyle = cssVar("--surface");
+  ctx.fillRect(0, 0, hmW, hmH);
+  for (var y = 0; y < NY; y++) {
+    var row = HM.values[y];
+    for (var x = 0; x < ND; x++) {
+      var v = row[x];
+      ctx.fillStyle = v === null ? cssVar("--surface-2") : rampColor(v, dark);
+      ctx.fillRect(PADL + x * CELL_W, PADT + y * CELL_H, CELL_W, CELL_H - 1);
+    }
+  }
+  /* Jahres-Labels alle 4 Jahre + 2025 */
+  ctx.fillStyle = cssVar("--muted");
+  ctx.font = "11px system-ui, sans-serif";
+  ctx.textAlign = "right"; ctx.textBaseline = "middle";
+  for (var yy = 0; yy < NY; yy++) {
+    var yr = HM.years[yy];
+    if ((yr % 4 === 0 && yr !== 2024) || yr === 2025) ctx.fillText(String(yr), PADL - 8, PADT + yy * CELL_H + (CELL_H - 1) / 2);
+  }
+  /* Monats-Ticks */
+  ctx.textAlign = "left"; ctx.textBaseline = "top";
+  ctx.strokeStyle = cssVar("--grid");
+  for (var m = 0; m < 12; m++) {
+    var px = PADL + monthStart[m] * CELL_W;
+    ctx.beginPath(); ctx.moveTo(px + 0.5, PADT); ctx.lineTo(px + 0.5, PADT + NY * CELL_H); ctx.stroke();
+    ctx.fillText(MONTH_NAMES[m], px + 3, PADT + NY * CELL_H + 6);
+  }
+  /* Auswahl-Rahmen */
+  if (selectedYear !== null) {
+    var i = HM.years.indexOf(selectedYear);
+    if (i >= 0) {
+      ctx.strokeStyle = cssVar("--ink");
+      ctx.lineWidth = 1.6;
+      ctx.strokeRect(PADL - 1, PADT + i * CELL_H - 1, ND * CELL_W + 2, CELL_H + 1);
+      ctx.lineWidth = 1;
+    }
+  }
+  /* Tastatur-Fokus: Marker auf der angesteuerten Zeile (das Canvas kann keine
+     fokussierbaren Kinder haben, der Marker ist der einzige sichtbare Anker).
+     Dreifarbig, weil die Fokusfarbe allein auf der Rampe verschwindet (#4f8fd6
+     auf #d98a41 sind 1,2:1, auf mittleren Brauntoenen 2,6:1). Die Rampe deckt
+     alle Helligkeiten ab, deshalb traegt der Marker ein Paar aus --surface
+     (Flaechenton) und --ink (Textton) mit sich: In jedem Theme ist eines davon
+     dunkel und das andere hell, und zu einem solchen Paar hat JEDE Zellfarbe
+     mindestens 3,8:1. Die Fokusfarbe dazwischen haelt die Seiten-Konvention. */
+  if (hmKeyNav) {
+    var mx = PADL - 2, my = PADT + hmRow * CELL_H - 2;
+    var mw = ND * CELL_W + 4, mh = CELL_H + 2;
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = cssVar("--surface");
+    ctx.strokeRect(mx - 1.5, my - 1.5, mw + 3, mh + 3);
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = cssVar("--focus");
+    ctx.strokeRect(mx, my, mw, mh);
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = cssVar("--ink");
+    ctx.strokeRect(mx + 1.5, my + 1.5, mw - 3, mh - 3);
+  }
+}
+
+function drawGradbar() {
+  var g = document.getElementById("hm-gradbar").getContext("2d");
+  var dark = isDark();
+  for (var i = 0; i < 180; i++) { g.fillStyle = rampColor(i / 179, dark); g.fillRect(i, 0, 1, 10); }
+}
+
+hmCanvas.addEventListener("mousemove", function (e) {
+  var r = hmCanvas.getBoundingClientRect();
+  var x = Math.floor((e.clientX - r.left - PADL) / CELL_W);
+  var y = Math.floor((e.clientY - r.top - PADT) / CELL_H);
+  if (x < 0 || x >= ND || y < 0 || y >= NY) { hideTip(); return; }
+  var v = HM.values[y][x];
+  var n = HM.n_stations ? HM.n_stations[y][x] : null;
+  showTip('<div class="t-head">' + dayLabel(x, HM.years[y]) + "</div>" +
+    '<div class="t-sub">' + t("heatmap.tip.wasserjahr", { jahr: HM.years[y] }) + "</div>" +
+    '<dl class="t-rows"><dt>' + t("heatmap.tip.netzanteil") + "</dt><dd>" +
+      (v === null ? "–" : fmt(100 * v, 1) + L.percentSpaceNoBreak + "%") + "</dd>" +
+    (n === null
+      ? "<dt>" + t("heatmap.tip.netzgroesse") + "</dt><dd>" +
+        t("heatmap.tip.netzgroesse.wert", { anzahl: fmt(D.meta.n_stations_primary, 0) }) + "</dd>"
+      : "<dt>" + t("heatmap.tip.meldende") + "</dt><dd>" +
+        t("heatmap.tip.meldende.wert", { anzahl: fmt(n, 0), gesamt: fmt(D.meta.n_stations_primary, 0) }) + "</dd>") +
+    "</dl>",
+    e.clientX, e.clientY);
+});
+hmCanvas.addEventListener("mouseleave", hideTip);
+hmCanvas.addEventListener("click", function (e) {
+  var r = hmCanvas.getBoundingClientRect();
+  var y = Math.floor((e.clientY - r.top - PADT) / CELL_H);
+  if (y < 0 || y >= NY) return;
+  hmRow = y; /* Tastatur setzt dort fort, wo die Maus zuletzt war */
+  selectYear(HM.years[y] === selectedYear ? null : HM.years[y]);
+});
+
+/* ---------- Heatmap: Tastaturzugang ----------
+   Das Canvas kann keine Kinder fuer assistive Technik exponieren, und 34 x 365
+   Zellen einzeln anzusteuern waere unbedienbar. Die Tastatur navigiert deshalb
+   nur die 34 Jahres-Zeilen — dieselbe Granularitaet, die auch der Klick hat. */
+hmCanvas.setAttribute("tabindex", "0");
+function hmYearStats(y) {
+  var row = HM.values[y], sum = 0, n = 0, peak = 0, peakX = 0;
+  for (var x = 0; x < ND; x++) {
+    var v = row[x];
+    if (v === null) continue;
+    sum += v; n++;
+    if (v > peak) { peak = v; peakX = x; }
+  }
+  return { mean: n ? sum / n : 0, peak: peak, peakDay: dayLabel(peakX, HM.years[y]) };
+}
+function hmYearTipHtml(y) {
+  var s = hmYearStats(y);
+  return '<div class="t-head">' + t("heatmap.tip.wasserjahr", { jahr: HM.years[y] }) + "</div>" +
+    '<div class="t-sub">' + t("heatmap.tip.netzanteil") + "</div>" +
+    '<dl class="t-rows"><dt>' + t("heatmap.jahrtip.spitzenwert") + "</dt><dd>" + fmt(100 * s.peak, 1) +
+      L.percentSpaceNoBreak + '% <span class="t-dim">' + t("heatmap.jahrtip.amtag", { tag: s.peakDay }) + "</span></dd>" +
+    "<dt>" + t("heatmap.jahrtip.jahresmittel") + "</dt><dd>" + fmt(100 * s.mean, 1) + L.percentSpaceNoBreak + "%</dd></dl>" +
+    '<div class="t-foot">' + t("heatmap.jahrtip.tasten") + "</div>";
+}
+function hmYearAria(y) {
+  var s = hmYearStats(y);
+  return t("heatmap.jahraria", {
+    jahr: HM.years[y],
+    spitze: fmt(100 * s.peak, 1),
+    tag: s.peakDay,
+    mittel: fmt(100 * s.mean, 1),
+    zusatz: HM.years[y] === selectedYear ? t("heatmap.jahraria.hervorgehoben") : ""
+  });
+}
+function hmKeyUpdate() {
+  drawHeatmap();
+  anchorTip(hmCanvas, function () {
+    var r = hmCanvas.getBoundingClientRect();
+    showTip(hmYearTipHtml(hmRow), r.left + PADL,
+      r.top + PADT + hmRow * CELL_H + CELL_H, hmCanvas);
+  });
+  hmCanvas.setAttribute("aria-label",
+    t("heatmap.aria.tastaturauswahl", { basis: hmBaseLabel, jahr: hmYearAria(hmRow) }));
+}
+/* :focus-visible unterscheidet Maus- von Tastaturfokus; aeltere Engines ohne
+   Unterstuetzung werfen bei matches() — dort zeigen wir den Marker immer. */
+function focusVisible(el) {
+  try { return el.matches(":focus-visible"); } catch (err) { return true; }
+}
+hmCanvas.addEventListener("focus", function () {
+  if (selectedYear !== null) {
+    var si = HM.years.indexOf(selectedYear);
+    if (si >= 0) hmRow = si;
+  }
+  if (!focusVisible(hmCanvas)) return; /* Mausklick blendet keinen Marker ein */
+  hmKeyNav = true;
+  hmKeyUpdate();
+});
+hmCanvas.addEventListener("blur", function () {
+  hmKeyNav = false;
+  hmCanvas.setAttribute("aria-label", hmBaseLabel);
+  drawHeatmap();
+  hideTip();
+});
+hmCanvas.addEventListener("keydown", function (e) {
+  var k = e.key;
+  if (k === "Enter" || k === " " || k === "Spacebar") {
+    e.preventDefault(); /* sonst scrollt die Leertaste die Seite */
+    hmKeyNav = true;
+    selectYear(HM.years[hmRow] === selectedYear ? null : HM.years[hmRow]);
+    hmKeyUpdate();
+    return;
+  }
+  if (k === "ArrowDown") hmRow = Math.min(NY - 1, hmRow + 1);
+  else if (k === "ArrowUp") hmRow = Math.max(0, hmRow - 1);
+  else if (k === "Home") hmRow = 0;
+  else if (k === "End") hmRow = NY - 1;
+  else return; /* alles andere unangetastet lassen (Tab, Escape, …) */
+  e.preventDefault(); /* nur behandelte Tasten: die Seite darf nicht mitscrollen */
+  hmKeyNav = true;
+  hmKeyUpdate();
+});
+
+/* ---------- Zeitreihe (SVG-Säulen) ---------- */
+var tsState = { variant: "primary", metric: "days" };
+var METRIC_META = {
+  days:    { label: t("index.kennzahl.tage.label"), unit: t("index.kennzahl.tage.einheit"), dec: 1, senUnit: t("index.kennzahl.tage.senEinheit"), senDec: 2 },
+  deficit: { label: t("index.kennzahl.defizit.label"), unit: t("index.kennzahl.defizit.einheit"), dec: 2, senUnit: t("index.kennzahl.defizit.senEinheit"), senDec: 3 },
+  ssi:     { label: t("index.kennzahl.ssi.label"), unit: "", dec: 2, senUnit: t("index.kennzahl.ssi.senEinheit"), senDec: 3 }
+};
+var VARIANT_LABEL = { primary: t("index.variante.primaer.label"), natural: t("index.variante.naturnah.label") };
+/* Ein-Satz-Erklärungen für Laien. Die Pegelzahlen je Variante stehen nicht in
+   data.json — Spannen als statischer Text, Quelle: docs/ergebnisse-phase4.md. */
+var VARIANT_EXPLAIN = {
+  primary: t("index.variante.primaer.erklaerung"),
+  natural: t("index.variante.naturnah.erklaerung")
+};
+var METRIC_EXPLAIN = {
+  days: t("index.kennzahl.tage.erklaerung"),
+  deficit: t("index.kennzahl.defizit.erklaerung"),
+  ssi: t("index.kennzahl.ssi.erklaerung")
+};
+var DIR_LABEL = { increasing: t("trend.richtung.steigend"), decreasing: t("trend.richtung.fallend"), "no trend": t("trend.richtung.keiner") };
+
+function renderTimeseries() {
+  var years = D.national_index.years;
+  var vals = D.national_index[tsState.variant === "primary" ? "primary" : "natural"][tsState.metric];
+  var meta = METRIC_META[tsState.metric];
+  var n = years.length;
+  var W = Math.max(680, n * 20), H = 312, PL = 46, PR = 10, PT = 28, PB = 26;
+  var innerW = W - PL - PR, innerH = H - PT - PB;
+  /* Feste y-Domäne je Kennzahl über BEIDE Varianten (primär + naturnah), damit
+     die Skala beim Variantenwechsel stehen bleibt und die Varianten direkt
+     vergleichbar sind. Beim Kennzahl-Wechsel darf sie wechseln (andere Einheit). */
+  var allVals = D.national_index.primary[tsState.metric]
+    .concat(D.national_index.natural[tsState.metric]);
+  var dmax = Math.max.apply(null, allVals), dmin = Math.min.apply(null, allVals);
+  var vmax, vmin;
+  if (tsState.metric === "ssi") {
+    /* symmetrisch um 0, auf 0,5 gerundet — Nulllinie bleibt mittig sichtbar */
+    vmax = Math.ceil(Math.max(Math.abs(dmax), Math.abs(dmin)) / 0.5) * 0.5;
+    vmin = -vmax;
+  } else {
+    vmin = 0;
+    var roundTo = tsState.metric === "days" ? 10 : 0.5;
+    vmax = Math.ceil(dmax / roundTo) * roundTo;
+  }
+  var span = vmax - vmin || 1;
+  function sy(v) { return PT + (vmax - v) / span * innerH; }
+  var bw = innerW / n;
+
+  /* runde Achsen-Ticks */
+  var step = niceStep(span / 4), ticks = [];
+  /* Laufvariable NICHT t nennen: das wuerde den Textnachschlag t() in dieser
+     Funktion verdecken. */
+  for (var tk = Math.ceil(vmin / step) * step; tk <= vmax + 1e-9; tk += step) ticks.push(Math.round(tk * 1000) / 1000);
+
+  /* role="group" statt role="img": Unter role="img" waeren die fokussierbaren
+     Saeulen fuer assistive Technik unsichtbar (der Teilbaum gilt als ein Bild). */
+  var s = '<svg id="ts-svg" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '" role="group" aria-label="' + t("index.svg.aria", { kennzahl: meta.label }) + '">';
+  ticks.forEach(function (tv) {
+    var y = sy(tv);
+    s += '<line x1="' + PL + '" x2="' + (W - PR) + '" y1="' + y + '" y2="' + y + '" stroke="var(--grid)" stroke-width="1"/>';
+    s += '<text x="' + (PL - 7) + '" y="' + (y + 3.5) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + fmt(tv, tv % 1 ? meta.dec : 0) + "</text>";
+  });
+  /* Null-Linie + Achsentitel/Einheit */
+  s += '<line x1="' + PL + '" x2="' + (W - PR) + '" y1="' + sy(0) + '" y2="' + sy(0) + '" stroke="var(--baseline)" stroke-width="1"/>';
+  s += '<text x="' + PL + '" y="12" font-size="11" fill="var(--muted)">' +
+    (tsState.metric === "days" ? t("index.achse.tage") : tsState.metric === "deficit" ? t("index.achse.defizit") : t("index.achse.ssi")) + "</text>";
+  /* Direktlabel metrik-abhängig: bei SSI das trockenste Jahr (Minimum), sonst das Maximum */
+  var extIdx = tsState.metric === "ssi"
+    ? vals.indexOf(Math.min.apply(null, vals))
+    : vals.indexOf(Math.max.apply(null, vals));
+  for (var i = 0; i < n; i++) {
+    var v = vals[i], y0 = sy(Math.max(0, v)), h = Math.abs(sy(v) - sy(0));
+    var x = PL + i * bw + bw * 0.14, w = bw * 0.72;
+    var sel = years[i] === selectedYear;
+    /* Jede Saeule ist ein Umschalter fuer die Jahres-Hervorhebung — deshalb
+       role="button" + aria-pressed und nicht role="img": Enter/Leertaste loesen
+       denselben Pfad aus wie der Klick. */
+    var ariaWert = fmt(vals[i], meta.dec) + (meta.unit ? " " + meta.unit : "");
+    s += '<rect data-i="' + i + '" tabindex="0" role="button" aria-pressed="' + (sel ? "true" : "false") +
+      '" aria-label="' + t("index.saeule.aria", { jahr: years[i], wert: ariaWert }) +
+      '" x="' + x.toFixed(1) + '" y="' + y0.toFixed(1) + '" width="' + w.toFixed(1) +
+      '" height="' + Math.max(h, 0.5).toFixed(1) + '" rx="2" fill="' + (sel ? "var(--ink)" : "var(--accent)") + '"' +
+      (sel ? ' stroke="var(--ink)" stroke-width="1.5"' : "") + "/>";
+  }
+  /* selektives Direktlabel am Extremjahr (unterhalb der Säule, wenn negativ) */
+  var mv = vals[extIdx];
+  /* negative Extreme: Label in den freien Raum über der Nulllinie statt unter
+     die Säule (dort kollidiert es mit den Jahres-Ticks) */
+  var labY = mv >= 0 ? sy(mv) - 6 : sy(0) - 5;
+  s += '<text x="' + (PL + extIdx * bw + bw / 2) + '" y="' + labY.toFixed(1) + '" text-anchor="middle" font-size="11" font-weight="600" fill="var(--ink-2)">' +
+    years[extIdx] + ": " + fmt(mv, meta.dec) + "</text>";
+  /* X-Achse */
+  for (var yi = 0; yi < n; yi++) {
+    if ((years[yi] % 4 === 0 && years[yi] !== 2024) || years[yi] === 2025) {
+      s += '<text x="' + (PL + yi * bw + bw / 2) + '" y="' + (H - 8) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + years[yi] + "</text>";
+    }
+  }
+  s += "</svg>";
+  document.getElementById("ts-scroll").innerHTML = s;
+
+  var svg = document.getElementById("ts-svg");
+  /* Ein Markup fuer Hover und Fokus — beide Pfade zeigen denselben Tooltip. */
+  function tsTipHtml(i) {
+    return '<div class="t-head">' + t("heatmap.tip.wasserjahr", { jahr: years[i] }) + "</div>" +
+      '<div class="t-sub">' + meta.label + "</div>" +
+      '<div class="t-val">' + fmt(vals[i], meta.dec) +
+      (meta.unit ? "&nbsp;" + meta.unit : "") + "</div>";
+  }
+  svg.addEventListener("mousemove", function (e) {
+    var tEl = e.target;
+    if (tEl.tagName !== "rect") { hideTip(); return; }
+    showTip(tsTipHtml(+tEl.getAttribute("data-i")), e.clientX, e.clientY);
+  });
+  svg.addEventListener("mouseleave", hideTip);
+  svg.addEventListener("click", function (e) {
+    if (e.target.tagName !== "rect") return;
+    var i = +e.target.getAttribute("data-i");
+    selectYear(years[i] === selectedYear ? null : years[i]);
+  });
+
+  /* Tastatur: derselbe Tooltip wie beim Hover, nur am Element statt am Zeiger
+     verankert; Enter/Leertaste schalten die Jahres-Hervorhebung um. */
+  function tsShowTip(el) {
+    var i = +el.getAttribute("data-i");
+    anchorTip(el, function () {
+      var r = el.getBoundingClientRect();
+      showTip(tsTipHtml(i), r.left, r.bottom + 2, el);
+    });
+  }
+  svg.addEventListener("focusin", function (e) {
+    if (e.target.tagName === "rect") tsShowTip(e.target);
+  });
+  svg.addEventListener("focusout", function (e) {
+    if (e.target.tagName === "rect") hideTip();
+  });
+  svg.addEventListener("keydown", function (e) {
+    if (e.target.tagName !== "rect") return;
+    if (e.key !== "Enter" && e.key !== " " && e.key !== "Spacebar") return;
+    e.preventDefault(); /* sonst scrollt die Leertaste die Seite */
+    var i = +e.target.getAttribute("data-i");
+    selectYear(years[i] === selectedYear ? null : years[i]);
+    /* selectYear rendert das SVG neu — der Fokus muss auf dieselbe Saeule zurueck,
+       sonst landet er nach jedem Umschalten am Seitenanfang. */
+    var again = document.querySelector('#ts-svg rect[data-i="' + i + '"]');
+    if (again) again.focus();
+  });
+
+  /* Erklärzeile zur aktuellen Auswahl */
+  document.getElementById("ts-explain").innerHTML =
+    VARIANT_EXPLAIN[tsState.variant] + " " + METRIC_EXPLAIN[tsState.metric];
+
+  /* MK-Karte */
+  var tr = D.trends[tsState.variant === "primary" ? "primary" : "natural"][tsState.metric];
+  var sen = tr.sen;
+  document.getElementById("mk-card").innerHTML =
+    '<div style="font:600 12px/1 system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">' + t("index.mk.titel") + "</div>" +
+    '<div class="dir">' + (DIR_LABEL[tr.dir] || tr.dir) + "</div>" +
+    "<dl><dt>" + t("index.mk.verfahren") + "</dt><dd>TFPW-Mann-Kendall</dd>" +
+    '<dt><span class="info" tabindex="0" data-info="' + t("index.mk.pwert.info") + '">' + t("index.mk.pwert") + "</span></dt><dd>" + fmtP(tr.p) + "</dd>" +
+    '<dt><span class="info" tabindex="0" data-info="' + t("index.mk.sen.info") + '">' + t("index.mk.sen") + "</span></dt><dd>" + (sen > 0 ? "+" : "") + fmt(sen, meta.senDec) + "&nbsp;" + meta.senUnit + "</dd>" +
+    "<dt>" + t("index.mk.fenster") + "</dt><dd>1992–2025 (n&nbsp;=&nbsp;34)</dd></dl>" +
+    '<div class="note">' + t("index.mk.note", { variante: VARIANT_LABEL[tsState.variant] }) + "</div>";
+
+  var note = document.getElementById("sel-note");
+  note.innerHTML = selectedYear === null ? "" :
+    t("index.auswahl.hinweis", {
+      jahr: selectedYear,
+      /* Der Button als Platzhalter, nicht hinten angehaengt: sonst muesste jede
+         Sprache den Gedankenstrich davor als Satzzeichen mitschleppen. */
+      button: '<button type="button" id="sel-clear">' + t("index.auswahl.aufheben") + "</button>"
+    });
+  var clr = document.getElementById("sel-clear");
+  if (clr) clr.addEventListener("click", function () { selectYear(null); });
+}
+function niceStep(x) {
+  var p = Math.pow(10, Math.floor(Math.log(x) / Math.LN10));
+  var f = x / p;
+  return (f < 1.5 ? 1 : f < 3.5 ? 2 : f < 7.5 ? 5 : 10) * p;
+}
+function selectYear(y) {
+  selectedYear = y;
+  drawHeatmap();
+  renderTimeseries();
+  if (y !== null) document.getElementById("sec-index").scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
+/* Info-Tooltips: Hover, Tastatur-Fokus UND Tap (Klick toggelt) — delegiert an
+   den Container, weil dessen Inhalt bei jedem Umschalten neu gerendert wird.
+   Genutzt von der MK-Karte und vom Stations-Detailpanel. */
+function bindInfoTips(card) {
+  if (!card) return;
+  var tapTarget = null;
+  function infoOf(e) {
+    return e.target && e.target.classList && e.target.classList.contains("info") ? e.target : null;
+  }
+  /* el als Tooltip-Anker: setzt aria-describedby und laesst den Tooltip beim
+     Scrollen am Begriff kleben — gilt fuer Hover, Fokus und Tap gleichermassen,
+     weil der Begriff in allen drei Faellen der Bezugspunkt ist. */
+  function showInfo(el) {
+    anchorTip(el, function () {
+      var r = el.getBoundingClientRect();
+      showTip(el.getAttribute("data-info"), r.left, r.bottom + 2, el);
+    });
+  }
+  card.addEventListener("mouseover", function (e) { var el = infoOf(e); if (el) showInfo(el); });
+  card.addEventListener("mouseout", function (e) { if (infoOf(e) && !tapTarget) hideTip(); });
+  card.addEventListener("focusin", function (e) { var el = infoOf(e); if (el) showInfo(el); });
+  card.addEventListener("focusout", function (e) { if (infoOf(e)) { tapTarget = null; hideTip(); } });
+  card.addEventListener("click", function (e) {
+    var el = infoOf(e);
+    if (!el) { tapTarget = null; hideTip(); return; }
+    if (tapTarget === el) { tapTarget = null; hideTip(); }
+    else { tapTarget = el; showInfo(el); }
+  });
+}
+bindInfoTips(document.getElementById("mk-card"));
+bindInfoTips(document.getElementById("st-detail"));
+
+document.querySelectorAll(".seg button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var key = b.hasAttribute("data-variant") ? "variant" : "metric";
+    tsState[key] = b.getAttribute("data-" + key);
+    b.parentElement.querySelectorAll("button").forEach(function (o) {
+      o.setAttribute("aria-pressed", o === b ? "true" : "false");
+    });
+    renderTimeseries();
+  });
+});
+
+/* ---------- Dekaden-Ridgeline ---------- */
+function renderRidge() {
+  var counts = D.decades.days_below_hist.counts;
+  var labels = D.decades.labels;
+  var shareZero = D.decades.stats.share_zero;
+  var nb = counts[0].length; /* 21 Klassen: 20x 10 Tage + 1 Ueberlauf (>200) */
+  var W = Math.max(620, Math.min(920, document.getElementById("ridge-holder").clientWidth || 760));
+  var PL = 118, PR = 20, PT = 20, PB = 34;
+  var rowH = 74, overlap = 30;
+  var H = PT + rowH * counts.length - overlap * (counts.length - 1) + PB + 20;
+  var innerW = W - PL - PR;
+  var bx = innerW / nb;
+  /* Null-Jahre (kein einziger Niedrigwassertag) aus der ersten Klasse heraus-
+     rechnen — sie stehen als Zahl in der Lesehilfe (share_zero) und wuerden
+     die Flaechen sonst zu drei identischen L-Spitzen entstellen. Anteile statt
+     Rohzahlen, weil die Dekaden unterschiedlich viele Station-Jahre haben. */
+  var shares = counts.map(function (row, d) {
+    var tot = row.reduce(function (a, b) { return a + b; }, 0);
+    var zeros = Math.round(tot * shareZero[d]);
+    var nonZero = tot - zeros;
+    return row.map(function (c, i) { return (i === 0 ? Math.max(0, c - zeros) : c) / nonZero; });
+  });
+  var smax = Math.max.apply(null, shares.map(function (r) { return Math.max.apply(null, r); }));
+  var amp = rowH + overlap * 0.55;
+  var cols = ["var(--dec-1)", "var(--dec-2)", "var(--dec-3)"];
+  var med = D.decades.stats.median;
+
+  var s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + t("dekaden.svg.aria") + '">';
+  /* X-Grid */
+  for (var g = 0; g <= 200; g += 50) {
+    var gx = PL + (g / 10) * bx;
+    s += '<line x1="' + gx + '" x2="' + gx + '" y1="' + PT + '" y2="' + (H - PB) + '" stroke="var(--grid)"/>';
+    if (g < 200) s += '<text x="' + gx + '" y="' + (H - PB + 16) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + g + "</text>";
+  }
+  s += '<text x="' + (PL + 20.5 * bx) + '" y="' + (H - PB + 16) + '" text-anchor="middle" font-size="11" fill="var(--muted)">&gt;&thinsp;200</text>';
+  s += '<text x="' + (W - PR) + '" y="' + (H - PB + 31) + '" text-anchor="end" font-size="11" fill="var(--muted)">' + t("dekaden.achse.x") + "</text>";
+  /* Überlauf-Trenner: rechts der 200er-Linie liegt eine gesammelte Klasse, keine Fortsetzung der Skala */
+  var divX = PL + 20 * bx;
+  s += '<line x1="' + divX + '" x2="' + divX + '" y1="' + PT + '" y2="' + (H - PB) + '" stroke="var(--baseline)" stroke-dasharray="4 4"/>';
+
+  for (var d = 0; d < counts.length; d++) {
+    var base = PT + rowH * (d + 1) - overlap * d;
+    var pts = "M" + PL + "," + base;
+    for (var i = 0; i < nb - 1; i++) {
+      var cx = PL + (i + 0.5) * bx;
+      var cy = base - (shares[d][i] / smax) * amp;
+      pts += " L" + cx.toFixed(1) + "," + cy.toFixed(1);
+    }
+    pts += " L" + divX + "," + base + " Z";
+    s += '<path d="' + pts + '" fill="' + cols[d] + '" fill-opacity="0.55" stroke="' + cols[d] + '" stroke-width="2" stroke-linejoin="round"/>';
+    /* Überlauf-Klasse (>200 Tage) als eigener schmaler Balken */
+    var ovH = (shares[d][nb - 1] / smax) * amp;
+    if (ovH > 0.2) {
+      s += '<rect x="' + (divX + 0.2 * bx) + '" y="' + (base - ovH).toFixed(1) + '" width="' + (0.6 * bx).toFixed(1) +
+        '" height="' + ovH.toFixed(1) + '" rx="1.5" fill="' + cols[d] + '" fill-opacity="0.75"/>';
+    }
+    s += '<line x1="' + PL + '" x2="' + (PL + innerW) + '" y1="' + base + '" y2="' + base + '" stroke="var(--baseline)"/>';
+    /* Median-Marker (auf die eigene Zeile begrenzt, damit sich Labels nicht stapeln) */
+    var mx = PL + (med[d] / 10) * bx;
+    var mTop = base - (rowH - overlap) * 0.92;
+    s += '<line x1="' + mx + '" x2="' + mx + '" y1="' + mTop + '" y2="' + base + '" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="3 3"/>';
+    s += '<text x="' + (mx + 6) + '" y="' + (mTop + 4) + '" font-size="11.5" font-weight="600" fill="var(--ink)">' + t("dekaden.median.marker", { wert: fmt(med[d], 0) }) + "</text>";
+    /* Dekaden-Label */
+    s += '<text x="' + (PL - 12) + '" y="' + (base - 6) + '" text-anchor="end" font-size="13" font-weight="600" fill="var(--ink-2)">' + labels[d] + "</text>";
+  }
+  s += "</svg>";
+  document.getElementById("ridge-holder").innerHTML = s;
+  document.getElementById("ridge-zero").textContent = t("dekaden.nulljahre", {
+    /* textContent, kein Markup: der Abstand kommt als Zeichen aus dem Locale-Satz,
+       nicht als '&nbsp;'-Entity (siehe LOCALE_PFLICHTFELDER in niedrigwasser.i18n). */
+    anteile: shareZero.map(function (z) { return fmt(100 * z, 0) + L.percentSpaceBreaking + "%"; }).join(" / ")
+  });
+}
+
+/* ---------- Stationskarte ---------- */
+var mapNaturalOnly = false;
+var selStation = -1; /* Index in D.stations; -1 = keine Auswahl */
+function renderMap() {
+  var LON0 = 5.5, LON1 = 15.5, LAT0 = 47, LAT1 = 55.5;
+  var COS = Math.cos(51 * Math.PI / 180);
+  var W = 520, H = Math.round(W * (LAT1 - LAT0) / ((LON1 - LON0) * COS)); /* ≈ 702 */
+  function px(lon) { return (lon - LON0) / (LON1 - LON0) * W; }
+  function py(lat) { return (LAT1 - lat) / (LAT1 - LAT0) * H; }
+  var TREND_COL = { increasing: "var(--accent)", decreasing: "var(--cool)", "no trend": "var(--neutral-dot)" };
+  var counts = { increasing: 0, decreasing: 0, "no trend": 0 }, shown = 0;
+
+  /* Basemap (Natural Earth) unter den Punkten — gleiche Projektion px/py */
+  function geoPath(line, close) {
+    var d = "";
+    for (var i = 0; i < line.length; i++) {
+      d += (i ? "L" : "M") + px(line[i][0]).toFixed(1) + " " + py(line[i][1]).toFixed(1);
+    }
+    return d + (close ? "Z" : "");
+  }
+  var s = "";
+  if (G.land && G.land.length) {
+    s += '<g pointer-events="none" aria-hidden="true">';
+    var dLand = "";
+    G.land.forEach(function (ring) { dLand += geoPath(ring, true); });
+    s += '<path d="' + dLand + '" fill="var(--map-land)" stroke="var(--map-border)" stroke-width="1"/>';
+    (G.laender || []).forEach(function (line) {
+      s += '<path d="' + geoPath(line) + '" fill="none" stroke="var(--map-border)" stroke-width="0.6"/>';
+    });
+    (G.rivers || []).forEach(function (line) {
+      s += '<path d="' + geoPath(line) + '" fill="none" stroke="var(--map-river)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>';
+    });
+    s += "</g>";
+  }
+  /* neutrale zuerst zeichnen, farbige oben */
+  var order = D.stations.slice().sort(function (a, b) {
+    return (a.days_trend === "no trend" ? 0 : 1) - (b.days_trend === "no trend" ? 0 : 1);
+  });
+  var ring = "";
+  order.forEach(function (st) {
+    var idx = D.stations.indexOf(st);
+    var hidden = mapNaturalOnly && !st.natural;
+    if (!hidden) { counts[st.days_trend] = (counts[st.days_trend] || 0) + 1; shown++; }
+    var r = 3 + Math.min(4.5, Math.abs(st.days_sen) * 1.5);
+    s += '<circle data-i="' + idx + '" cx="' + px(st.lon).toFixed(1) + '" cy="' + py(st.lat).toFixed(1) +
+      '" r="' + r.toFixed(1) + '" fill="' + (TREND_COL[st.days_trend] || "var(--neutral-dot)") +
+      '" fill-opacity="0.82" stroke="var(--surface)" stroke-width="1"' +
+      (hidden ? ' style="opacity:0.07;pointer-events:none"' : "") + "/>";
+    if (idx === selStation) {
+      ring = '<circle cx="' + px(st.lon).toFixed(1) + '" cy="' + py(st.lat).toFixed(1) +
+        '" r="' + (r + 4.5).toFixed(1) + '" fill="none" stroke="var(--ink)" stroke-width="2" pointer-events="none"/>';
+    }
+  });
+  s += ring; /* Auswahl-Ring zuletzt, damit er über allen Punkten liegt */
+  var svg = document.getElementById("map-svg");
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  svg.setAttribute("width", "100%");
+  svg.style.maxWidth = W + "px";
+  svg.style.display = "block";
+  svg.style.margin = "0 auto";
+  svg.innerHTML = s;
+
+  svg.onmousemove = function (e) {
+    var ziel = e.target;
+    if (ziel.tagName !== "circle") { hideTip(); return; }
+    var st = D.stations[+ziel.getAttribute("data-i")];
+    showTip('<div class="t-head">' + st.name + "</div>" +
+      '<div class="t-sub">' + (st.river || "–") + (st.natural ? " · " + t("karte.naturnah") : "") + "</div>" +
+      '<dl class="t-rows">' +
+      "<dt>" + t("karte.tip.tage") + '</dt><dd class="t-trend"><span class="dot" style="background:' +
+        (TREND_COL[st.days_trend] || "var(--neutral-dot)") + '"></span>' +
+        (DIR_LABEL[st.days_trend] || st.days_trend) + "</dd>" +
+      "<dt>" + t("index.mk.pwert") + "</dt><dd>" + fmtP(st.days_p) + "</dd>" +
+      "<dt>" + t("index.mk.sen") + "</dt><dd>" +
+        t("karte.tip.sen.wert", { wert: (st.days_sen > 0 ? "+" : "") + fmt(st.days_sen, 2) }) + "</dd>" +
+      "<dt>" + t("karte.tip.nm7qmin") + "</dt><dd>" +
+        t("heatmap.tip.wasserjahr", { jahr: st.min_year }) + "</dd>" +
+      "</dl>", e.clientX, e.clientY);
+  };
+  svg.onmouseleave = hideTip;
+  svg.onclick = function (e) {
+    if (e.target.tagName !== "circle" || !e.target.hasAttribute("data-i")) return;
+    hideTip();
+    selectStation(+e.target.getAttribute("data-i"));
+  };
+
+  var nNat = D.stations.filter(function (s) { return s.natural; }).length;
+  document.getElementById("map-legend").innerHTML =
+    '<div style="font:600 12px/1 system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">' + t("karte.legende.titel") + "</div>" +
+    '<div class="row"><span class="dot" style="background:var(--accent)"></span>' + t("karte.legende.steigend", { anzahl: counts.increasing }) + "</div>" +
+    '<div class="row"><span class="dot" style="background:var(--cool)"></span>' + t("karte.legende.fallend", { anzahl: counts.decreasing || 0 }) + "</div>" +
+    '<div class="row"><span class="dot" style="background:var(--neutral-dot)"></span>' + t("karte.legende.keintrend", { anzahl: counts["no trend"] }) + "</div>" +
+    '<div class="row" style="margin-top:12px"><span style="display:inline-flex;align-items:center;gap:4px"><span class="dot" style="width:7px;height:7px;background:var(--muted)"></span><span class="dot" style="width:14px;height:14px;background:var(--muted)"></span></span>' + t("karte.legende.punktgroesse") + "</div>" +
+    '<label class="toggle"><input type="checkbox" id="nat-toggle"' + (mapNaturalOnly ? " checked" : "") + "> " +
+      t("karte.legende.nurnaturnah", { anzahl: nNat, gesamt: nSt }) + "</label>" +
+    '<div class="hint" style="margin-top:10px">' + t("karte.legende.hinweis", { anzahl: shown }) +
+    (G.land && G.land.length ? "<br>" + t("karte.legende.grundlage") : "") + "</div>";
+  document.getElementById("nat-toggle").addEventListener("change", function (e) {
+    mapNaturalOnly = e.target.checked;
+    renderMap();
+  });
+}
+
+/* ---------- Stationssuche + Detailansicht ---------- */
+function normStr(s) {
+  return (s || "").toLowerCase().normalize("NFD")
+    .replace(/[̀-ͯ]/g, "").replace(/ß/g, "ss");
+}
+var searchIndex = D.stations.map(function (st, i) {
+  return { i: i, key: normStr(st.name) + " " + normStr(st.river) };
+});
+var stSearch = document.getElementById("st-search");
+var stSuggest = document.getElementById("st-suggest");
+var stDetail = document.getElementById("st-detail");
+var matches = [], activeOpt = -1;
+
+function closeSuggest() {
+  stSuggest.hidden = true;
+  stSuggest.innerHTML = "";
+  stSearch.setAttribute("aria-expanded", "false");
+  stSearch.removeAttribute("aria-activedescendant");
+  matches = []; activeOpt = -1;
+}
+function updateSuggest() {
+  var q = normStr(stSearch.value.trim());
+  if (q.length < 2) { closeSuggest(); return; }
+  matches = searchIndex.filter(function (e) { return e.key.indexOf(q) !== -1; }).slice(0, 8);
+  activeOpt = -1;
+  if (!matches.length) {
+    stSuggest.innerHTML = '<li class="none" aria-disabled="true">' + t("karte.suche.leer") + "</li>";
+  } else {
+    stSuggest.innerHTML = matches.map(function (m, k) {
+      var st = D.stations[m.i];
+      return '<li id="st-opt-' + k + '" role="option" data-k="' + k + '">' + st.name +
+        (st.river ? ' <span class="riv">· ' + st.river + "</span>" : "") + "</li>";
+    }).join("");
+  }
+  stSuggest.hidden = false;
+  stSearch.setAttribute("aria-expanded", "true");
+}
+function setActiveOpt(k) {
+  activeOpt = k;
+  var opts = stSuggest.querySelectorAll("[role=option]");
+  opts.forEach(function (o, j) { o.classList.toggle("active", j === k); });
+  if (k >= 0 && opts[k]) {
+    stSearch.setAttribute("aria-activedescendant", opts[k].id);
+    opts[k].scrollIntoView({ block: "nearest" });
+  } else stSearch.removeAttribute("aria-activedescendant");
+}
+stSearch.addEventListener("input", updateSuggest);
+stSearch.addEventListener("keydown", function (e) {
+  if (stSuggest.hidden && (e.key === "ArrowDown" || e.key === "ArrowUp")) { updateSuggest(); return; }
+  if (e.key === "ArrowDown") { e.preventDefault(); if (matches.length) setActiveOpt((activeOpt + 1) % matches.length); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); if (matches.length) setActiveOpt((activeOpt - 1 + matches.length) % matches.length); }
+  else if (e.key === "Enter") {
+    if (activeOpt >= 0 && matches[activeOpt]) { e.preventDefault(); pickMatch(activeOpt); }
+    else if (matches.length === 1) { e.preventDefault(); pickMatch(0); }
+  }
+  else if (e.key === "Escape") { closeSuggest(); }
+});
+stSearch.addEventListener("blur", function () { setTimeout(closeSuggest, 150); });
+stSuggest.addEventListener("mousedown", function (e) {
+  var li = e.target.closest("[role=option]");
+  if (li) { e.preventDefault(); pickMatch(+li.getAttribute("data-k")); }
+});
+function pickMatch(k) {
+  var i = matches[k].i;
+  stSearch.value = D.stations[i].name;
+  closeSuggest();
+  selectStation(i);
+}
+
+function trendText(st) {
+  var sig = st.days_p !== null && st.days_p < 0.05;
+  if (sig && st.days_trend === "increasing") {
+    return t("station.trend.steigend", { sen: fmt(st.days_sen, 1), pwert: pText(st.days_p) });
+  }
+  if (sig && st.days_trend === "decreasing") {
+    return t("station.trend.fallend", { sen: fmt(st.days_sen, 1), pwert: pText(st.days_p) });
+  }
+  return t("station.trend.keiner", { pwert: pText(st.days_p) });
+}
+
+function sparklineSvg(st) {
+  var series = st.series || [];
+  var years = D.national_index.years;
+  var W = 360, H = 88, PB = 18, PT = 16;
+  var innerH = H - PB - PT;
+  var vmax = 0, maxIdx = -1;
+  series.forEach(function (v, i) { if (v !== null && v > vmax) { vmax = v; maxIdx = i; } });
+  if (maxIdx === -1) return '<p class="hint">' + t("station.spark.leer") + "</p>";
+  var bw = W / series.length;
+  var aria = t("station.spark.aria", {
+    von: years[0],
+    bis: years[years.length - 1],
+    station: st.name,
+    max: fmt(vmax, 0),
+    maxjahr: years[maxIdx]
+  });
+  var s = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + " " + H +
+    '" role="img" aria-label="' + aria.replace(/"/g, "&quot;") + '" style="max-width:100%;height:auto;display:block">';
+  s += '<line x1="0" x2="' + W + '" y1="' + (H - PB) + '" y2="' + (H - PB) + '" stroke="var(--baseline)"/>';
+  series.forEach(function (v, i) {
+    if (v === null) return;
+    var h = vmax ? (v / vmax) * innerH : 0;
+    s += '<rect x="' + (i * bw + bw * 0.15).toFixed(1) + '" y="' + (H - PB - h).toFixed(1) +
+      '" width="' + (bw * 0.7).toFixed(1) + '" height="' + Math.max(h, 0.75).toFixed(1) +
+      '" rx="1" fill="' + (i === maxIdx ? "var(--ink)" : "var(--accent)") + '"/>';
+  });
+  var lx = maxIdx * bw + bw / 2;
+  var anchor = lx < 44 ? "start" : lx > W - 44 ? "end" : "middle";
+  s += '<text x="' + lx.toFixed(1) + '" y="11" text-anchor="' + anchor +
+    '" font-size="11" font-weight="600" fill="var(--ink)">' +
+    t("station.spark.maxlabel", { jahr: years[maxIdx], wert: fmt(vmax, 0) }) + "</text>";
+  s += '<text x="0" y="' + (H - 4) + '" font-size="10.5" fill="var(--muted)">' + years[0] + "</text>";
+  s += '<text x="' + W + '" y="' + (H - 4) + '" text-anchor="end" font-size="10.5" fill="var(--muted)">' +
+    years[years.length - 1] + "</text>";
+  return s + "</svg>";
+}
+
+/* Abfluss-Steigung formatieren: >=1 -> 1 Nachkommastelle, sonst 2 signifikante
+   Stellen — traegt "−10,0" wie "0,004" (Wertespanne der 361 Pegel). */
+function fmtFlow(x) {
+  if (x === null || x === undefined) return "–";
+  var a = Math.abs(x), s;
+  if (a === 0) s = "0" + L.decimal + "0";
+  else if (a >= 1) s = fmt(x, 1);
+  else s = String(Number(x.toPrecision(2))).replace(".", L.decimal).replace("-", "−");
+  return s;
+}
+function nm7qTrendLine(st) {
+  if (st.nm7q_sen === null || st.nm7q_sen === undefined) return "";
+  var sig = st.nm7q_p !== null && st.nm7q_p !== undefined && st.nm7q_p < 0.05;
+  return '<p class="st-trend"><span title="' + t("station.nm7q.titel") + '">' + t("station.nm7q.label") + "</span>: <b>" +
+    t("station.nm7q.wert", { wert: (st.nm7q_sen > 0 ? "+" : "") + fmtFlow(st.nm7q_sen) }) + "</b> (" +
+    (sig ? t("station.nm7q.gesichert") : t("station.nm7q.ungesichert")) + ")</p>";
+}
+
+/* Zeile mit den FDR-korrigierten p-Werten. Der Erklaertext nennt die Zahl der
+   getesteten Pegel zur Laufzeit (D.stations.length), nichts hartkodiert.
+
+   Die Zeile erscheint nur fuer Kennzahlen, die ROH signifikant waren — nur dort
+   kann die Korrektur ueberhaupt etwas aendern. Fuer nie signifikante Pegel waere
+   "nicht mehr gesichert" eine Falschaussage (suggeriert einen Verlust durch die
+   Korrektur) und widerspraeche der Trendzeile darueber. Die Signifikanz-Bedingung
+   je Kennzahl ist identisch zu der Zeile, die direkt darueber steht:
+   trendText() fuer days (p < 0,05 UND gerichteter Trend), nm7qTrendLine() fuer NM7Q. */
+function fdrLine(st) {
+  var parts = [];
+  var daysRawSig = sigAt(st.days_p) &&
+    (st.days_trend === "increasing" || st.days_trend === "decreasing");
+  var nm7qRawSig = sigAt(st.nm7q_p);
+  if (daysRawSig && st.days_p_fdr !== null && st.days_p_fdr !== undefined) {
+    parts.push(t("station.fdr.tage", {
+      pwert: pText(st.days_p_fdr),
+      status: sigAt(st.days_p_fdr) ? t("station.fdr.weiterhin") : t("station.fdr.nichtmehr")
+    }));
+  }
+  if (nm7qRawSig && st.nm7q_p_fdr !== null && st.nm7q_p_fdr !== undefined) {
+    parts.push(t("station.fdr.nm7q", {
+      pwert: pText(st.nm7q_p_fdr),
+      status: sigAt(st.nm7q_p_fdr) ? t("station.fdr.weiterhin") : t("station.fdr.nichtmehr")
+    }));
+  }
+  if (!parts.length) return "";
+  var info = t("station.fdr.info", { anzahl: fmt(D.stations.length, 0) });
+  return '<p class="st-trend"><span class="info" tabindex="0" data-info="' +
+    info.replace(/"/g, "&quot;") + '">' + t("station.fdr.label") + "</span>: " +
+    parts.join(" · ") + "</p>";
+}
+
+function renderDetail(i) {
+  var st = D.stations[i];
+  stDetail.innerHTML =
+    '<button type="button" class="st-close" aria-label="' + t("station.detail.schliessen") + '">×</button>' +
+    '<div class="st-info">' +
+    '<h3 tabindex="-1">' + st.name + (st.natural ? '<span class="st-badge">' + t("karte.naturnah") + "</span>" : "") + "</h3>" +
+    '<p class="st-meta">' + (st.river || "–") +
+    (st.area_km2 !== null && st.area_km2 !== undefined
+      ? " · " + t("station.detail.einzugsgebiet", { flaeche: fmt(st.area_km2, 0) })
+      : "") + "</p>" +
+    '<p class="st-trend">' + trendText(st) + "</p>" +
+    nm7qTrendLine(st) +
+    fdrLine(st) +
+    '<p class="st-min">' + t("station.detail.minjahr", { jahr: st.min_year }) + "</p>" +
+    "</div>" +
+    '<div class="st-spark">' + sparklineSvg(st) +
+    '<p class="cap">' + t("station.detail.sparkcap") + "</p>" +
+    "</div>";
+  stDetail.hidden = false;
+  stDetail.querySelector(".st-close").addEventListener("click", closeDetail);
+}
+function selectStation(i) {
+  selStation = i;
+  renderMap();
+  renderDetail(i);
+  var h = stDetail.querySelector("h3");
+  if (h) h.focus({ preventScroll: false });
+}
+function closeDetail() {
+  selStation = -1;
+  stDetail.hidden = true;
+  stDetail.innerHTML = "";
+  renderMap();
+  stSearch.focus();
+}
+
+function redrawCanvases() { drawHeatmap(); drawGradbar(); }
+
+/* ---------- a11y: Canvas-Beschreibung + Netzgrößen-Hinweis ---------- */
+(function () {
+  hmCanvas.setAttribute("role", "img");
+  var maxShare = 0, maxY = 0, maxX = 0;
+  for (var y = 0; y < NY; y++) for (var x = 0; x < ND; x++) {
+    if (HM.values[y][x] > maxShare) { maxShare = HM.values[y][x]; maxY = y; maxX = x; }
+  }
+  /* hmBaseLabel ist der unveraenderliche Teil; die Tastatur-Navigation haengt die
+     jeweils angesteuerte Jahres-Zusammenfassung daran an (siehe hmKeyUpdate). */
+  hmBaseLabel = t("heatmap.aria.basis", {
+    von: HM.years[0],
+    bis: HM.years[NY - 1],
+    spitze: fmt(100 * maxShare, 1),
+    tag: dayLabel(maxX, HM.years[maxY]),
+    jahr: HM.years[maxY]
+  });
+  hmCanvas.setAttribute("aria-label", hmBaseLabel);
+  var summary = document.createElement("p");
+  summary.className = "visually-hidden";
+  summary.textContent = t("heatmap.aria.zusammenfassung", {
+    spitze: fmt(100 * maxShare, 1),
+    tag: dayLabel(maxX, HM.years[maxY]),
+    jahr: HM.years[maxY]
+  });
+  hmCanvas.parentElement.appendChild(summary);
+  if (HM.n_stations) {
+    var nMin = Infinity, nMax = 0;
+    for (var yy = 0; yy < NY; yy++) for (var xx = 0; xx < ND; xx++) {
+      var n = HM.n_stations[yy][xx];
+      if (n > 0) { if (n < nMin) nMin = n; if (n > nMax) nMax = n; }
+    }
+    var hint = document.getElementById("hm-nethint");
+    if (hint) hint.textContent = t("heatmap.netzhinweis", {
+      min: fmt(nMin, 0),
+      max: fmt(nMax, 0),
+      gesamt: fmt(D.meta.n_stations_primary, 0)
+    });
+  }
+})();
+
+/* ---------- Init ---------- */
+layoutHeatmap();
+drawHeatmap();
+drawGradbar();
+renderTimeseries();
+renderRidge();
+renderMap();
+var resizeTimer = null;
+window.addEventListener("resize", function () {
+  hideTip(); /* nach dem Neu-Layout stimmt die Ankerposition nicht mehr */
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function () {
+    layoutHeatmap();
+    drawHeatmap();
+    renderRidge();
+  }, 150);
+});
+})();
+</script>
+</body>
+</html>

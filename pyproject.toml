@@ -1,0 +1,40 @@
+[project]
+name = "niedrigwasser-trendindex"
+version = "0.2.0"
+description = "Niedrigwasser-Trendindex fuer das deutsche NIWIS-Messnetz 1992-2025"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Aeterna Labs", email = "263179084+syswave-dev@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "duckdb>=1.5.5",
+    "httpx>=0.28.1",
+    "matplotlib>=3.11.1",
+    "polars>=1.44.0",
+    "pyarrow>=25.0.1",
+    "pymannkendall>=1.4.3",
+    "scipy>=1.18.1",
+]
+
+[project.scripts]
+niedrigwasser = "niedrigwasser.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+# Verteilungsname folgt dem Repo, der Import-/CLI-Name bleibt kurz.
+[tool.uv.build-backend]
+module-name = "niedrigwasser"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]
+
+[tool.pytest.ini_options]
+markers = ["live: echte NIWIS-API-Calls (deselektiert per default)"]
+addopts = "-m 'not live'"

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Wenn Sie diese Analyse verwenden, zitieren Sie sie bitte wie folgt."
+title: "Niedrigwasser-Trendindex für das deutsche NIWIS-Messnetz"
+abstract: >-
+  Unabhängige, reproduzierbare Analyse der Niedrigwasser-Entwicklung in
+  Deutschland 1992–2025 auf Basis öffentlicher Abfluss-Tageswerte der
+  NIWIS-API (Bundesanstalt für Gewässerkunde). Umfasst Screening,
+  Kennzahlenberechnung (Q95, NM7Q, SSI), flächengewichtete nationale
+  Aggregation in vier Varianten sowie Trendstatistik (TFPW-Mann-Kendall,
+  Sen-Steigung, Benjamini-Hochberg-FDR).
+type: software
+authors:
+  - name: "Aeterna Labs"
+version: "0.2.0"
+date-released: "2026-09-02"
+license: MIT
+keywords:
+  - Niedrigwasser
+  - Hydrologie
+  - Trendanalyse
+  - Mann-Kendall
+  - NIWIS
+  - Deutschland

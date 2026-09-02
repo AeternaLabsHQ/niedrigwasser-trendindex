@@ -1,0 +1,10 @@
+run,variant,metric,trend,p_value,sens_slope
+flagslax,natural,index_days,increasing,0.001491385293904468,0.7886108451492566
+flagsstrict,natural,index_days,increasing,0.00012965135216647106,1.3709317579988176
+main,natural,index_days,increasing,0.00011426780149759175,1.3440062408841142
+flagslax,natural,index_deficit,increasing,0.0008644178493009136,0.033074145021788806
+flagsstrict,natural,index_deficit,increasing,0.001202307016299864,0.05365035266282841
+main,natural,index_deficit,increasing,0.0010780589400980478,0.05435756932726817
+flagslax,natural,index_ssi,decreasing,0.008060034025016538,-0.03200555579644986
+flagsstrict,natural,index_ssi,decreasing,0.026711985379674896,-0.03820615195664133
+main,natural,index_ssi,decreasing,0.026711985379674896,-0.03915413400439346

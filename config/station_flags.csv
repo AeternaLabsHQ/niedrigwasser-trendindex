@@ -1,0 +1,206 @@
+station_id,flag,note
+DESM_DEBB5530302,mining,Schwarze Elster im Lausitzer Revier: Suempfungswasser und Restseeflutung (Senftenberger/Bergheider See)
+DESM_DEBB5530302,reservoir,"bemerkung: ""unterhalb Talsperre"" - Speicherbecken/Talsperre im Lausitzer Wasserverbundsystem unmittelbar oberhalb"
+DESM_DEBB5530500,mining,"Schwarze Elster, Lausitzer Revier - Suempfungswasser und Speicherbewirtschaftung der LMBV; regelmaeszige Trockenfallstrecken infolge Grundwasserwiederanstieg"
+DESM_DEBB5824700,mining,"Spree unterhalb des Lausitzer Reviers: der Spreeabfluss wird seit Jahrzehnten durch Suempfungswasser gestuetzt und ueber LMBV-Speicher (Spremberg, Bautzen, Quitzdorf) niedrigwasserbewirtschaftet - der markanteste Homogenitaetsbruch im Datensatz"
+DESM_DEBB5824700,reservoir,"bemerkung: ""stromunterhalb Talsperre, durch Stauhaltung beeinflusst"" (Talsperre Spremberg)"
+DESM_DEBB5825500,mining,"Spree unterhalb Lausitzer Revier, siehe Leibsch; bemerkung: ""durch Stauhaltung beeinflusst"""
+DESM_DEBB5827000,mining,"Mueggelspree unterhalb Lausitzer Revier; bemerkung: ""durch Stauhaltung beeinflusst"""
+DESM_DEBB5827000,transfer,Pegel Hohenbinde liegt in derselben staugeregelten Wasserstrasze wie Grosze Traenke (Spree-Oder-Wasserstrasze/Mueggelspree); Abflussaufteilung durch Schleusen- und Wehrbetrieb gesteuert
+DESM_DEBB5861600,mining,unsicher: uebergeleitetes Spreewasser traegt Lausitzer Bergbauwasser (Vorbehalt: Anteil variabel)
+DESM_DEBB5861600,transfer,Pegel am Dahme-Umflutkanal-Auslauf Maerkisch Buchholz: Spreewasser wird gezielt in die Dahme uebergeleitet
+DESM_DEBB5873301,erosion,"bemerkung: Q-Anlage an anderer Stelle als die Vorgaengermessstelle - Standortwechsel, W erst ab AJ 2018"
+DESM_DEBB6602600,mining,Neisze unterhalb Turow und Berzdorf; zusaetzlich Bergbaueinfluesse im polnischen Teileinzugsgebiet
+DESM_DEBB6940000,transfer,"Wriezener Alte Oder: Oderbruch-Meliorationssystem, Abfluss durch Einlassbauwerke, Wehre und Schoepfwerke vollstaendig gesteuert; bemerkung: ""durch Stauhaltung beeinflusst"""
+DESM_DEBE5827700,mining,Spree in Berlin - der Berliner Niedrigwasserabfluss stammt zu erheblichen Teilen aus Lausitzer Suempfungs-/Flutungswasser
+DESM_DEBE5827700,transfer,"bemerkung: ""Staubeeinflusst und verzweigtes Gewaessersystem. Weiterer Abfluss ueber Teltowkanal moeglich"" - Abflussaufteilung im Berliner Gewaessernetz kuenstlich gesteuert"
+DESM_DEBW1140,transfer,"unsicher: bemerkung: ""Klaeranlagenanteil bei Niedrigwasser bei ca. 20%"" - genau an der 20-%-Schwelle; konsequente Anwendung der Regel - Vorbehalt: Grenzfall"
+DESM_DEBW3318,erosion,"bemerkung: ""Ausgepraegtes Geschiebe"", Pegelumbau Juli 2018"
+DESM_DEBW431,transfer,"bemerkung: ""Klaeranlagenanteil bei Niedrigwasser bei ca. 40%"" - dokumentierter Fremdwasseranteil weit ueber der 20-%-Schwelle; der Niedrigwasserabfluss ist zu rund 40 % Abwasser und damit nicht klimagetrieben"
+DESM_DEBW461,erosion,"bemerkung: ""Ausgepraegte Sedimentation"" - W-Q-Beziehung driftet, betrifft W nicht Q"
+DESM_DEBY10039802,reservoir,"unterhalb Lech-Muendung: Forggensee/Roszhaupten (168 hm3, EZG 1592 km2) sowie Iller-/Wertach-Speicher mit saisonaler Bewirtschaftung und Mindestabgabe-Regelung; Staustufenkette der Donau"
+DESM_DEBY10046105,reservoir,"unterhalb Lech-Muendung: Forggensee/Roszhaupten (168 hm3, EZG 1592 km2) sowie Iller-/Wertach-Speicher mit saisonaler Bewirtschaftung und Mindestabgabe-Regelung; Staustufenkette der Donau"
+DESM_DEBY10053009,reservoir,"unterhalb Lech-Muendung: Forggensee/Roszhaupten (168 hm3, EZG 1592 km2) sowie Iller-/Wertach-Speicher mit saisonaler Bewirtschaftung und Mindestabgabe-Regelung; Staustufenkette der Donau"
+DESM_DEBY10053009,transfer,"unsicher: unterhalb Entnahmestelle Bad Goegging: Donau-Main-Ueberleitung entnimmt Donauwasser in das Rhein-/Maineinzugsgebiet, bis 21 m3/s gerade in Trockenperioden (Vorbehalt: Jahresmittel nur ~5 m3/s)"
+DESM_DEBY17207508,reservoir,"bemerkung: ""Abfluesse seit 1976 durch den Vilstalsee (AEo = 666 km2; Gesamtstauraum = 10.7 hm3) beeinflusst"" - gesteuertes Teil-EZG = 46 % des Pegel-EZG"
+DESM_DEBY18003004,reservoir,alpine Speicherkraftwerke im oesterreichisch-schweizerischen Inn-EZG verschieben Abfluss vom Sommer in den Winter
+DESM_DEBY18003004,transfer,"bemerkung: ""Abfluesse werden durch auszerhalb Deutschlands gelegene Zu- und Ableitungen beeinflusst"" (Engadiner Kraftwerke, Inntal-Ueberleitungen)"
+DESM_DEBY18606000,reservoir,unsicher: alpine Speicherkraftwerke im oesterreichischen Salzach-EZG (Tauernkraftwerke Kaprun u.a.) mit saisonaler Umverteilung - Vorbehalt: Flaechenanteil moderat
+DESM_DEMV58110.0,transfer,"Bolter Kanal: kuenstlicher Kanal der Mueritz-Havel-Wasserstrasze; ausgewiesenes EZG von 3 km2 zeigt, dass der Abfluss reine Schleusen-/Seenbewirtschaftung ist"
+DESM_DENW2721390000100,reservoir,"bemerkung: ""Pegel seit 1971 durch Obernautalsperre ... beeinflusst"""
+DESM_DENW2721390000100,transfer,"bemerkung: ""seit 1985 zusaetzlich durch Beileitungssystem beeinflusst"""
+DESM_DENW2721770000200,reservoir,"bemerkung: ""Pegel durch Talsperren beeinflusst"""
+DESM_DENW2725910000100,reservoir,"bemerkung: ""Durch Talsperren, Obernau 1972 beeinflusst"""
+DESM_DENW2728930000200,reservoir,"bemerkung: ""Durch Talsperren, Agger-1930, Genkel-1954, Wiehl-1974 beeinflusst"""
+DESM_DENW2728930000200,transfer,"bemerkung: ""Ueberleitung in die Dhuenn seit 01.04.1992"" - Wasser verlaesst das Agger-EZG; klarer Stufenwechsel 1992 mitten im Analysezeitraum"
+DESM_DENW2729100000100,reservoir,"bemerkung: ""Durch Talsperren, Obernau-1972, Wahnbach-1958, Agger-1930, Genkel-1954, Wiehl-1974 beeinflusst"""
+DESM_DENW2729100000100,transfer,Wahnbachtalsperre exportiert Trinkwasser nach Bonn/Rhein-Sieg (aus dem Sieg-EZG heraus); Agger-Dhuenn-Ueberleitung wirkt ebenfalls oberhalb
+DESM_DENW2736510000100,reservoir,"bemerkung: ""Durch mehrere Talsperren beeinflusst. Seit 01.11.1987 Betrieb der Wuppertalsperre"" - Stufenwechsel mitten in der Reihe"
+DESM_DENW2736790000200,reservoir,"bemerkung: ""Durch mehrere Talsperren beeinflusst. Seit 01.11.1987 Betrieb der Wuppertalsperre"""
+DESM_DENW2736879000200,reservoir,"bemerkung: ""Ab 1987 durch Grosze Dhuenntalsperre beeinflusst"" (81 hm3, Trinkwasser)"
+DESM_DENW2736879000200,transfer,Grosze Dhuenntalsperre wird ueber Beileitungen gespeist und exportiert Trinkwasser aus dem Dhuenn-EZG; laut bemerkung Pegel Lohmar zusaetzlich Ueberleitung Agger -> Dhuenn seit 01.04.1992
+DESM_DENW2747900000200,mining,"bemerkung: ""Durch Einleitungen von Suempfungswaessern aus dem Braunkohlentagebauen beeinflusst"" - Erft-Abfluss ist ueber Jahrzehnte kuenstlich aufgehoeht, Rueckbau bis 2030 erzeugt Trendbruch"
+DESM_DENW2761510000100,reservoir,"Hennetalsperre (Ruhrverband, 38 hm3) liegt oberhalb: Pegel bei Ruhr-km 178,34, Henne-Muendung km 182,3; LAWA-Paritaetsregel (Abschnitt 27615 liegt unterhalb des Zuflusses 27614) und EZG-Arithmetik (426 = 329 Ruhr + 97 Henne) bestaetigen die Lage unterhalb. Teil der Ruhrverbands-Niedrigwasseraufhoehung"
+DESM_DENW2765590000100,reservoir,"bemerkung: ""Referenzpegel fuer die Steuerung der Talsperren"" - Ruhrverband haelt an Villigst eine garantierte Mindestwasserfuehrung; direkteste denkbare Niedrigwassersteuerung"
+DESM_DENW2766930000100,reservoir,"bemerkung: ""Talsperrenbeeinflussung ab 1968 (Biggetalsperre)"" - Bigge 172 hm3, Teil der Ruhrverbands-Niedrigwasseraufhoehung"
+DESM_DENW2768897000100,reservoir,"bemerkung: ""Talsperrenbeeinflussung ab 1904/1912 (Ennepetalsperre)"""
+DESM_DENW2768900000100,reservoir,"bemerkung: ""Talsperrenbeeinflussung ab 1904/1912 (Ennepetalsperre)"" - korrekt: der Pegel Hagen_Eckesey liegt unterhalb der Ennepe-Muendung, EZG-Arithmetik 425 km2 = Volme + Ennepe (156 km2); zusaetzlich Gloertalsperre im Volme-System"
+DESM_DENW2787990000100,transfer,unsicher: unterhalb Hamm/Datteln: Speisung von Dortmund-Ems-Kanal und Wesel-Datteln-Kanal entnimmt der Lippe Wasser (Vorbehalt: Entnahmemenge nicht quantifiziert)
+DESM_DENW2788730000100,reservoir,Halterner Stausee (Gelsenwasser) unmittelbar oberhalb - Trinkwassergewinnung mit Stauregulierung
+DESM_DENW2788730000100,transfer,"Gelsenwasser foerdert aus dem Halterner Stauseesystem Trinkwasser in das Ruhrgebiet, also aus dem Stever-EZG heraus"
+DESM_DENW2789770000100,transfer,unsicher: unterhalb Hamm/Datteln: Speisung von Dortmund-Ems-Kanal und Wesel-Datteln-Kanal entnimmt der Lippe Wasser (Vorbehalt: Entnahmemenge nicht quantifiziert)
+DESM_DENW2822900000200,reservoir,Urfttalsperre (45 hm3) liegt unmittelbar oberhalb; Pegel-EZG 345 km2 entspricht praktisch dem Talsperren-EZG
+DESM_DENW2822900000200,transfer,Urftwasser wird per Stollen zum Kraftwerk Heimbach in die Rur abgeleitet - Wasser verlaesst die Urft oberhalb des natuerlichen Zusammenflusses
+DESM_DENW2824590000400,mining,Inde wurde fuer den Tagebau Inden verlegt; Vorfluter fuer Braunkohle-Suempfungswaesser
+DESM_DENW2825190000200,reservoir,"Rurtalsperre Schwammenauel (203 hm3, WVER) mit Niedrigwasseraufhoehung der Rur oberhalb"
+DESM_DENW2829100000100,mining,unterhalb Inde-Muendung: Suempfungswasser Tagebau Inden/Hambach ueber die Inde in die Rur
+DESM_DENW2829100000100,reservoir,Rurtalsperren-System (Schwammenauel/Urft) oberhalb
+DESM_DENW2849900000100,mining,"Schwalm im Einflussbereich der Garzweiler-Suempfung; RWE-Einleitmaszahmen ""im Bereich der Schwalm"" (aktuell ~1.7 Mio m3/a, wasserrechtlich befristet) stuetzen den Abfluss"
+DESM_DENW2869500000200,mining,Niersquelle bei Kuckum durch Tagebau-Suempfung versiegt; die Niers wird seither aus Suempfungswasser gespeist (RWE-Einleitmaszahmen Garzweiler) - Niedrigwasserabfluss vollstaendig anthropogen
+DESM_DENW4433000000100,reservoir,"bemerkung: ""Talsperrenbeeinflussungen"" (Diemeltalsperre, 20 hm3)"
+DESM_DESL1092220,reservoir,"Talsperre Nonnweiler/Primstalsperre (20 hm3) oberhalb, betrieben u.a. zur Niedrigwasseraufhoehung der Saar und zur Trinkwasserversorgung"
+DESM_DESL1092220,transfer,Nonnweiler liefert Trinkwasser ins saarlaendische Verbundnetz (Ausleitung aus dem Prims-EZG)
+DESM_DESN553020,mining,"Obere Schwarze Elster mitten im Lausitzer Braunkohlerevier (Tagebaue Nochten/Reichwalde, Sanierungsbergbau, Restseeflutung) - Abfluss ueber Jahrzehnte durch Suempfung kuenstlich erhoeht, nach Auslauf der Suempfung fallend"
+DESM_DESN554220,mining,Hoyerswerdaer Schwarzwasser unmittelbar im Tagebaugebiet Nochten/Reichwalde; Vorfluter fuer Grubenwasser und Flutungswasser
+DESM_DESN560021,reservoir,"Vereinigte Mulde unterhalb des gesamten erzgebirgischen Trinkwassertalsperren-Systems (Eibenstock, Kriebstein, Rauschenbach, Saidenbach, Klingenberg/Lehnmuehle)"
+DESM_DESN560021,transfer,erzgebirgische Trinkwassertalsperren exportieren Fernwasser nach Chemnitz/Dresden/Leipzig aus dem Mulde-EZG heraus
+DESM_DESN562115,reservoir,"Talsperre Eibenstock (75 hm3, Trinkwasser) sowie Muldenberg/Carlsfeld im Oberlauf der Zwickauer Mulde"
+DESM_DESN562115,transfer,Eibenstock speist die Fernwasserversorgung Suedsachsen - Ausleitung aus dem EZG
+DESM_DESN567451,reservoir,"unsicher: Zschopau unterhalb Floeha-Muendung: Talsperren Rauschenbach, Saidenbach, Neunzehnhain im Floeha-System (Vorbehalt: Flaechenanteil ~10 %)"
+DESM_DESN567451,transfer,Trinkwasserausleitung aus dem Floeha-/Zschopau-System in den suedsaechsischen Fernwasserverbund
+DESM_DESN576631,mining,"Leipziger Suedraum: Flutung von Zwenkauer und Cospudener See aus der Weiszen Elster, Suempfungswassereinleitungen, Flussverlegungen - Niedrigwasserregime massiv ueberpraegt"
+DESM_DESN576631,reservoir,"Talsperren Pirk und Poehl (62 hm3, Brauch-/Niedrigwasseraufhoehung der Weiszen Elster) oberhalb"
+DESM_DESN583251,mining,"Schwarzer Schoeps im Tagebaufeld Nochten/Reichwalde, Verlegungen und Grubenwassereinleitung"
+DESM_DESN583251,reservoir,"Talsperre Quitzdorf (25 hm3) oberhalb, Teil des Lausitzer Wasserverbundsystems zur Niedrigwasserstuetzung"
+DESM_DESN583290,mining,Weiszer Schoeps wurde fuer die Tagebaue Reichwalde/Nochten verlegt bzw. umverlegt; Vorfluter fuer Grubenwasser
+DESM_DESN660100,mining,unsicher: Lausitzer Neisze unterhalb der Einleitungen des polnischen Tagebaus Turow (Grubenwasserhaltung Bogatynia) - Vorbehalt: Menge nicht quantifiziert
+DESM_DESN660160,mining,"Neisze unterhalb Turow und unterhalb der Entnahmestelle fuer die Flutung des Berzdorfer Sees (2002-2013, mehrere m3/s) - klarer Eingriff mitten im Analysezeitraum"
+DESM_DESN663090,mining,"Plieszznitz bei Tauchritz unmittelbar am Berzdorfer See (Tagebau Berzdorf, Flutung 2002-2013) - Vorfluter/Flutungsgewaesser"
+DESM_DEST553060,mining,Schwarze Elster unterhalb des gesamten Lausitzer Reviers
+DESM_DEST576610,erosion,"bemerkung: ""Beeinflussung durch Wehre oh., Verkrautung"" - Verkrautung destabilisiert die W-Q-Beziehung saisonal, Wehrsteuerung oberhalb kommt hinzu; reiner Hinweis, kein Ausschluss (Wehrstau ohne Speicher, vgl. Report 5.6)"
+DESM_DEST576610,reservoir,"Talsperren Pirk und Poehl (62 hm3, Brauch-/Niedrigwasseraufhoehung der Weiszen Elster) oberhalb"
+DESM_DEST579070,reservoir,"bemerkung: ""Beeinflussung durch TS Wendefurth"" - Rappbode-Talsperrensystem (~165 hm3) mit Niedrigwasseraufhoehung und Brauchwasserabgabe"
+DESM_DEST579070,transfer,"Rappbode-System liefert Fernwasser nach Halle/Magdeburg, also aus dem Bode-EZG heraus"
+DESM_DETH421510,reservoir,"Talsperre Schoenbrunn (23 hm3, Trinkwasser) oberhalb an der Schleuse"
+DESM_DETH421510,transfer,Schoenbrunn speist das Thueringer Fernwassernetz - Ausleitung aus dem EZG
+DESM_DETH570250,reservoir,"unterhalb der Saale-Kaskade (Bleiloch 215 hm3 + Hohenwarte 182 hm3): groesztes deutsches Speichersystem, Abgabe zur Niedrigwasseraufhoehung und Energieerzeugung dominiert das Sommer-Niedrigwasser"
+DESM_DETH570260,reservoir,"unterhalb der Saale-Kaskade (Bleiloch 215 hm3 + Hohenwarte 182 hm3): groesztes deutsches Speichersystem, Abgabe zur Niedrigwasseraufhoehung und Energieerzeugung dominiert das Sommer-Niedrigwasser"
+DESM_DETH570270,reservoir,"unterhalb der Saale-Kaskade (Bleiloch 215 hm3 + Hohenwarte 182 hm3): groesztes deutsches Speichersystem, Abgabe zur Niedrigwasseraufhoehung und Energieerzeugung dominiert das Sommer-Niedrigwasser"
+DESM_DETH570280,reservoir,"unterhalb der Saale-Kaskade (Bleiloch 215 hm3 + Hohenwarte 182 hm3): groesztes deutsches Speichersystem, Abgabe zur Niedrigwasseraufhoehung und Energieerzeugung dominiert das Sommer-Niedrigwasser"
+DESM_DETH570330,reservoir,"unterhalb der Saale-Kaskade (Bleiloch 215 hm3 + Hohenwarte 182 hm3): groesztes deutsches Speichersystem, Abgabe zur Niedrigwasseraufhoehung und Energieerzeugung dominiert das Sommer-Niedrigwasser"
+DESM_DETH572115,reservoir,"Talsperre Leibis-Lichte (39 hm3) im Lichte-Zufluss, in Betrieb seit 2005 - Stufenwechsel mitten im Analysezeitraum"
+DESM_DETH572115,transfer,Leibis-Lichte ist Trinkwassertalsperre der Fernwasserversorgung Thueringen; Wasser verlaesst das Schwarza-EZG
+DESM_DETH574210,reservoir,Gera unterhalb Apfelstaedt-Muendung - erbt die Steuerung des Ohra-/Schmalwasser-Systems
+DESM_DETH574210,transfer,erbt die Ohra-Fernwasserueberleitung ueber die Apfelstaedt
+DESM_DETH574630,reservoir,Talsperren Ohra/Schmalwasser/Tambach-Dietharz oberhalb; die Apfelstaedt faellt unterhalb der Entnahme regelmaeszig trocken
+DESM_DETH574630,transfer,"Ohra-Ueberleitung: Trinkwasser wird in das Thueringer Fernwassernetz (Erfurt/Gotha) ausgeleitet, verlaesst das Apfelstaedt-EZG"
+DESM_DETH576470,reservoir,"Talsperren Pirk und Poehl (62 hm3, Brauch-/Niedrigwasseraufhoehung der Weiszen Elster) oberhalb"
+DESM_DETH576520,reservoir,"Talsperren Pirk und Poehl (62 hm3, Brauch-/Niedrigwasseraufhoehung der Weiszen Elster) oberhalb"
+DESM_DETH577320,reservoir,Talsperren Zeulenroda und Weida oberhalb (Trinkwasserversorgung Ostthueringen)
+DESM_DETH577320,transfer,Fernwasserausleitung aus dem Weida-EZG (Trinkwasserverbund Ostthueringen)
+DESM_DEXX10056302,reservoir,"unterhalb Lech-Muendung: Forggensee/Roszhaupten (168 hm3, EZG 1592 km2) sowie Iller-/Wertach-Speicher mit saisonaler Bewirtschaftung und Mindestabgabe-Regelung; Staustufenkette der Donau"
+DESM_DEXX10056302,transfer,"unsicher: unterhalb Entnahmestelle Bad Goegging: Donau-Main-Ueberleitung entnimmt Donauwasser in das Rhein-/Maineinzugsgebiet, bis 21 m3/s gerade in Trockenperioden (Vorbehalt: Jahresmittel nur ~5 m3/s)"
+DESM_DEXX10078000,reservoir,"unterhalb Lech-Muendung: Forggensee/Roszhaupten (168 hm3, EZG 1592 km2) sowie Iller-/Wertach-Speicher mit saisonaler Bewirtschaftung und Mindestabgabe-Regelung; Staustufenkette der Donau"
+DESM_DEXX10078000,transfer,"unsicher: unterhalb Entnahmestelle Bad Goegging: Donau-Main-Ueberleitung entnimmt Donauwasser in das Rhein-/Maineinzugsgebiet, bis 21 m3/s gerade in Trockenperioden (Vorbehalt: Jahresmittel nur ~5 m3/s)"
+DESM_DEXX10088003,reservoir,"unterhalb Lech-Muendung: Forggensee/Roszhaupten (168 hm3, EZG 1592 km2) sowie Iller-/Wertach-Speicher mit saisonaler Bewirtschaftung und Mindestabgabe-Regelung; Staustufenkette der Donau"
+DESM_DEXX10088003,transfer,"unsicher: unterhalb Entnahmestelle Bad Goegging: Donau-Main-Ueberleitung entnimmt Donauwasser in das Rhein-/Maineinzugsgebiet, bis 21 m3/s gerade in Trockenperioden (Vorbehalt: Jahresmittel nur ~5 m3/s)"
+DESM_DEXX23700200,erosion,"Oberrhein-Erosionsstrecke unterhalb Iffezheim (Geschiebezugabe); betrifft W, nicht Q"
+DESM_DEXX23700200,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX23700600,erosion,"Oberrhein-Erosionsstrecke unterhalb Iffezheim (Geschiebezugabe); betrifft W, nicht Q"
+DESM_DEXX23700600,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX23900200,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX24300304,transfer,"unterhalb Regnitz-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehlsee -> Rednitz/Regnitz) hoeht das Main-Niedrigwasser gezielt auf, bis 21 m3/s"
+DESM_DEXX24300600,transfer,"unterhalb Regnitz-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehlsee -> Rednitz/Regnitz) hoeht das Main-Niedrigwasser gezielt auf, bis 21 m3/s"
+DESM_DEXX24900108,transfer,"unterhalb Regnitz-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehlsee -> Rednitz/Regnitz) hoeht das Main-Niedrigwasser gezielt auf, bis 21 m3/s"
+DESM_DEXX25100100,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX25100100,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX25700100,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX25700100,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX26100100,reservoir,"unsicher: Mosel: franzoesische Speicher (Reservoir du Vieux-Pre u.a.) werden zur Stuetzung des Moselniedrigwassers bewirtschaftet, dazu die durchgehende Staustufenkette der Groszschifffahrtsstrasze - Vorbehalt: Effektgroesze nicht quantifiziert"
+DESM_DEXX26400220,mining,"unsicher: Grubenwasserhaltung des Saarreviers: jahrzehntelange Einleitung gehobener Grubenwaesser, seit Einstellung des Bergbaus 2012 im Umbau; potenzieller Trendbruch mitten im Analysezeitraum, Mengengeruest nicht belegt"
+DESM_DEXX26400220,reservoir,"Saar: Niedrigwasseraufhoehung aus der Talsperre Nonnweiler, dazu Staustufenkette der kanalisierten Saar und franzoesische Stauhaltungen im Oberlauf"
+DESM_DEXX26400550,mining,"unsicher: Grubenwasserhaltung des Saarreviers: jahrzehntelange Einleitung gehobener Grubenwaesser, seit Einstellung des Bergbaus 2012 im Umbau; potenzieller Trendbruch mitten im Analysezeitraum, Mengengeruest nicht belegt"
+DESM_DEXX26400550,reservoir,"Saar: Niedrigwasseraufhoehung aus der Talsperre Nonnweiler, dazu Staustufenkette der kanalisierten Saar und franzoesische Stauhaltungen im Oberlauf"
+DESM_DEXX26900400,mining,"unsicher: unterhalb Saar-Muendung: Grubenwaesser des Saarreviers, Menge nicht quantifizierbar"
+DESM_DEXX26900400,reservoir,"unsicher: Mosel: franzoesische Speicher (Reservoir du Vieux-Pre u.a.) werden zur Stuetzung des Moselniedrigwassers bewirtschaftet, dazu die durchgehende Staustufenkette der Groszschifffahrtsstrasze - Vorbehalt: Effektgroesze nicht quantifiziert"
+DESM_DEXX27100400,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX27100400,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX2710080,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX2710080,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX2730010,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX2730010,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX2750010,mining,unterhalb Erft-Muendung (Neuss): Suempfungswaesser des Rheinischen Braunkohlereviers ueber Erft/Rur/Inde; RWE-Einleitungen bis ~150 Mio m3/a
+DESM_DEXX2750010,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX2750010,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX2770010,erosion,"Niederrhein-Erosionsstrecke; betrifft W, nicht Q"
+DESM_DEXX2770010,mining,unterhalb Erft-Muendung (Neuss): Suempfungswaesser des Rheinischen Braunkohlereviers ueber Erft/Rur/Inde; RWE-Einleitungen bis ~150 Mio m3/a
+DESM_DEXX2770010,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX2770010,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX2770040,erosion,"Niederrhein-Erosionsstrecke; betrifft W, nicht Q"
+DESM_DEXX2770040,mining,unterhalb Erft-Muendung (Neuss): Suempfungswaesser des Rheinischen Braunkohlereviers ueber Erft/Rur/Inde; RWE-Einleitungen bis ~150 Mio m3/a
+DESM_DEXX2770040,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX2770040,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX2790010,erosion,"Niederrhein-Erosionsstrecke; betrifft W, nicht Q"
+DESM_DEXX2790010,mining,unterhalb Erft-Muendung (Neuss): Suempfungswaesser des Rheinischen Braunkohlereviers ueber Erft/Rur/Inde; RWE-Einleitungen bis ~150 Mio m3/a
+DESM_DEXX2790010,reservoir,Alpine Speicherkraftwerke CH/AT (>2 km3 Speicherinhalt) + Bodensee-/Alpenrhein-Regulierung: saisonale Umverteilung Sommer->Winter praegt das Sommer-Niedrigwasser des Rheins; zusaetzlich Talsperrensysteme in Neckar-/Main-/Mosel-/Ruhr-Zufluessen
+DESM_DEXX2790010,transfer,unterhalb Main-Muendung: Donau-Main-Ueberleitung (Brombachsee/Altmuehl -> Regnitz/Main) fuehrt in Trockenperioden bis 21 m3/s zusaetzliches Donauwasser in das Rheineinzugsgebiet
+DESM_DEXX3390020,transfer,unterhalb Nasses Dreieck/Bevergern: Ems speist den Dortmund-Ems-Kanal; aus dem DEK wird Wasser ins Speicherbecken Geeste geleitet und der Ems bei Niedrigwasser gezielt wieder zugegeben (bis 23 Mio m3/a) - Niedrigwasserregime aktiv bewirtschaftet
+DESM_DEXX3500015,transfer,unterhalb Nasses Dreieck/Bevergern: Ems speist den Dortmund-Ems-Kanal; aus dem DEK wird Wasser ins Speicherbecken Geeste geleitet und der Ems bei Niedrigwasser gezielt wieder zugegeben (bis 23 Mio m3/a) - Niedrigwasserregime aktiv bewirtschaftet
+DESM_DEXX42900100,reservoir,"Fulda unterhalb Eder-Muendung: Edertalsperre steuert den Abfluss (bemerkung leer, aber Bewirtschaftung dokumentiert)"
+DESM_DEXX43100109,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX45100100,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX45300200,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX45900208,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX47500200,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX47500200,transfer,unsicher: unterhalb Minden: Speisung des Mittellandkanals durch Pumpwerk Minden entnimmt der Weser Wasser (Vorbehalt: Umfang nicht quantifiziert)
+DESM_DEXX47900209,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX47900209,transfer,unsicher: unterhalb Minden: Speisung des Mittellandkanals durch Pumpwerk Minden entnimmt der Weser Wasser (Vorbehalt: Umfang nicht quantifiziert)
+DESM_DEXX48900204,reservoir,"sechs Harzwasserwerke-Talsperren im Aller-EZG (Oker, Grane, Soese, Oder, Innerste, Ecker; zusammen ~180 hm3) mit dokumentierter Niedrigwasseraufhoehung von Oker/Innerste/Leine"
+DESM_DEXX48900204,transfer,"Harzwasserwerke exportieren Fernwasser aus dem Harz nach Hannover/Bremen/Goettingen, also aus dem Aller-EZG heraus; dazu Beileitungen zwischen den Harztalsperren (Grane <- Innerste, Ecker/Oder-Ueberleitungen)"
+DESM_DEXX49100101,reservoir,Edertalsperre (202 hm3) und Diemeltalsperre werden explizit zur Niedrigwasseraufhoehung der Oberweser fuer die Schifffahrt abgegeben (dokumentierte Bewirtschaftungsregel)
+DESM_DEXX49100101,transfer,unsicher: unterhalb Minden: Speisung des Mittellandkanals durch Pumpwerk Minden entnimmt der Weser Wasser (Vorbehalt: Umfang nicht quantifiziert)
+DESM_DEXX501010,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX501060,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX501261,erosion,"bekannte Elbe-Sohlerosionsstrecke; betrifft W, nicht Q"
+DESM_DEXX501261,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX501420,erosion,"bekannte Elbe-Sohlerosionsstrecke; betrifft W, nicht Q"
+DESM_DEXX501420,mining,"unterhalb Muendung Schwarze Elster (bzw. Mulde/Saale): Lausitzer und mitteldeutsche Bergbauwaesser, Restseeflutung, Suempfungswasser"
+DESM_DEXX501420,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX502010,erosion,"bekannte Elbe-Sohlerosionsstrecke; betrifft W, nicht Q"
+DESM_DEXX502010,mining,"unterhalb Muendung Schwarze Elster (bzw. Mulde/Saale): Lausitzer und mitteldeutsche Bergbauwaesser, Restseeflutung, Suempfungswasser"
+DESM_DEXX502010,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX502070,mining,"unterhalb Muendung Schwarze Elster (bzw. Mulde/Saale): Lausitzer und mitteldeutsche Bergbauwaesser, Restseeflutung, Suempfungswasser"
+DESM_DEXX502070,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX502180,mining,"unterhalb Muendung Schwarze Elster (bzw. Mulde/Saale): Lausitzer und mitteldeutsche Bergbauwaesser, Restseeflutung, Suempfungswasser"
+DESM_DEXX502180,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX502350,mining,"unterhalb Muendung Schwarze Elster (bzw. Mulde/Saale): Lausitzer und mitteldeutsche Bergbauwaesser, Restseeflutung, Suempfungswasser"
+DESM_DEXX502350,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX503050,mining,"unterhalb Muendung Schwarze Elster (bzw. Mulde/Saale): Lausitzer und mitteldeutsche Bergbauwaesser, Restseeflutung, Suempfungswasser"
+DESM_DEXX503050,reservoir,"Moldau-Kaskade (Orlik/Slapy/Lipno, >1.4 km3) wird explizit zur Niedrigwasseraufhoehung der Elbe fuer die Schifffahrt bewirtschaftet; zusaetzlich Saale-Kaskade und saechsische/tschechische Trinkwassertalsperren"
+DESM_DEXX570810,mining,"unterhalb Muendung Weisze Elster: Bergbauwaesser und Restseeflutung des Mitteldeutschen Reviers (Leipziger Suedraum, Geiseltal, Suedharz-Kali)"
+DESM_DEXX570810,reservoir,Saale-Kaskade (Bleiloch/Hohenwarte) oberhalb; zusaetzlich Talsperren im Weisze-Elster- und Unstrut-System
+DESM_DEXX570910,mining,"unterhalb Muendung Weisze Elster: Bergbauwaesser und Restseeflutung des Mitteldeutschen Reviers (Leipziger Suedraum, Geiseltal, Suedharz-Kali)"
+DESM_DEXX570910,reservoir,Saale-Kaskade (Bleiloch/Hohenwarte) oberhalb; zusaetzlich Talsperren im Weisze-Elster- und Unstrut-System
+DESM_DEXX570940,mining,"unterhalb Muendung Weisze Elster: Bergbauwaesser und Restseeflutung des Mitteldeutschen Reviers (Leipziger Suedraum, Geiseltal, Suedharz-Kali)"
+DESM_DEXX570940,reservoir,Saale-Kaskade (Bleiloch/Hohenwarte) oberhalb; zusaetzlich Talsperren im Weisze-Elster- und Unstrut-System
+DESM_DEXX580430,mining,unsicher: fuehrt Spreewasser und damit Lausitzer Bergbau-/Flutungswasser (Vorbehalt: Anteil variabel)
+DESM_DEXX580430,transfer,Untere Havel-Wasserstrasze: staugeregelte Bundeswasserstrasze mit kuenstlicher Abflussaufteilung (Havel/Gnevsdorfer Vorflut) und Kanalverbindungen
+DESM_DEXX580520,mining,unsicher: fuehrt Spreewasser und damit Lausitzer Bergbau-/Flutungswasser (Vorbehalt: Anteil variabel)
+DESM_DEXX580520,transfer,Untere Havel-Wasserstrasze: staugeregelte Bundeswasserstrasze mit kuenstlicher Abflussaufteilung (Havel/Gnevsdorfer Vorflut) und Kanalverbindungen
+DESM_DEXX580601,mining,unsicher: fuehrt Spreewasser und damit Lausitzer Bergbau-/Flutungswasser (Vorbehalt: Anteil variabel)
+DESM_DEXX580601,transfer,Untere Havel-Wasserstrasze: staugeregelte Bundeswasserstrasze mit kuenstlicher Abflussaufteilung (Havel/Gnevsdorfer Vorflut) und Kanalverbindungen
+DESM_DEXX580790,mining,unsicher: fuehrt Spreewasser und damit Lausitzer Bergbau-/Flutungswasser (Vorbehalt: Anteil variabel)
+DESM_DEXX580790,transfer,Untere Havel-Wasserstrasze: staugeregelte Bundeswasserstrasze mit kuenstlicher Abflussaufteilung (Havel/Gnevsdorfer Vorflut) und Kanalverbindungen
+DESM_DEXX581591,transfer,"Havel-Oder-Wasserstrasze: Schleusen-/Wehrbetrieb, Verbindung Havel <-> Oder"
+DESM_DEXX582670,mining,Mueggelspree unterhalb Lausitzer Revier
+DESM_DEXX582670,transfer,Pegel in der Spree-Oder-Wasserstrasze; Abfluss durch Schleusen-/Wehrbetrieb und Kanalverbindungen zur Oder bestimmt
+DESM_DEXX585920,mining,"unsicher: Kanalwasser stammt aus der Spree, also anteilig aus Lausitzer Bergbauwasser"
+DESM_DEXX585920,transfer,Pegel in der Spree-Oder-Wasserstrasze (EZG-Angabe 70 km2 ist kein hydrologisches Einzugsgebiet); Abfluss = Schleusen- und Kanalbetrieb
+DESM_DEXX586280,mining,"unsicher: Anteil Lausitzer Bergbauwasser ueber die Dahme-Umflut, Anteil variabel"
+DESM_DEXX586280,transfer,"Dahme-Wasserstrasze, Schleusen-/Wehrbetrieb und Spree-Ueberleitung ueber die Dahme-Umflut"
+DESM_DEXX587020,mining,unsicher: Speisung aus der Spree (Lausitzer Bergbauwasser)
+DESM_DEXX587020,transfer,"Teltowkanal: kuenstliche Wasserstrasze, Abfluss durch Wehr/Schleuse Kleinmachnow und Spree-Ueberleitung gesteuert"
+DESM_DEXX603000,mining,unsicher: Grubenwasserhaltung des oberschlesischen Steinkohlereviers speist erhebliche Wassermengen in die Oder (Vorbehalt: Mengengeruest nicht belegt)
+DESM_DEXX603000,reservoir,"unsicher: polnisch/tschechische Speicherkaskaden im Oder-EZG (Nysa Klodzka-Kaskade Otmuchow/Nysa, Turawa, Sleszska Harta) werden zur Niedrigwasseraufhoehung fuer die Schifffahrt bewirtschaftet - Vorbehalt: keine deutsche Bewirtschaftungsdokumentation"
+DESM_DEXX603080,mining,unsicher: Grubenwasserhaltung des oberschlesischen Steinkohlereviers speist erhebliche Wassermengen in die Oder (Vorbehalt: Mengengeruest nicht belegt)
+DESM_DEXX603080,reservoir,"unsicher: polnisch/tschechische Speicherkaskaden im Oder-EZG (Nysa Klodzka-Kaskade Otmuchow/Nysa, Turawa, Sleszska Harta) werden zur Niedrigwasseraufhoehung fuer die Schifffahrt bewirtschaftet - Vorbehalt: keine deutsche Bewirtschaftungsdokumentation"

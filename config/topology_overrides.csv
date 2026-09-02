@@ -1,0 +1,66 @@
+station_id,downstream_id,note
+DESM_DEXX24900108,DESM_DEXX25100100,Main muendet in Rhein bei Mainz (Main-Muendung = Rhein-Pegel Mainz)
+DESM_DEXX26900400,DESM_DEXX27100400,Mosel muendet in Rhein bei Koblenz (naechster Rhein-Pegel: Andernach)
+DESM_DEXX23800690,DESM_DEXX23900200,Neckar muendet in Rhein bei Mannheim (naechster Rhein-Pegel: Worms)
+DESM_DERP2540025800,DESM_DEXX25700100,Nahe muendet in Rhein bei Bingen (naechster Rhein-Pegel: Kaub)
+DESM_DENW2729100000100,DESM_DEXX2730010,Sieg muendet in Rhein bei Bonn-Mondorf (naechster Rhein-Pegel: Koeln)
+DESM_DERP2718040300,DESM_DEXX2710080,Ahr muendet in Rhein bei Sinzig (naechster Rhein-Pegel: Bonn)
+DESM_DENW2736790000200,DESM_DEXX2750010,Wupper muendet in Rhein bei Leverkusen (naechster Rhein-Pegel: Duesseldorf)
+DESM_DENW2747900000200,DESM_DEXX2750010,Erft muendet in Rhein bei Neuss (naechster Rhein-Pegel: Duesseldorf)
+DESM_DENW2765590000100,DESM_DEXX2770010,Ruhr muendet in Rhein bei Duisburg-Ruhrort; Villigst-Pegel liegt ca. 50 km oberhalb der eigentlichen Muendung (naehe Schwerte)
+DESM_DENW2789770000100,DESM_DEXX2790010,Lippe muendet in Rhein bei Wesel; Wesel-Duisburg-Wachstum reicht nicht -> Rees als sicherer naechster Pegel
+DESM_DEBW390,DESM_DEXX23700200,Kinzig (BW) muendet in Rhein oberhalb Maxau -> Maxau-EZG enthaelt Kinzig bereits
+DESM_DEXX26400550,DESM_DEXX26900400,Saar muendet in Mosel bei Konz/Trier -> naechster Mosel-Pegel Cochem
+DESM_DESL1062220,DESM_DEXX26400550,Blies muendet in Saar oberhalb Fremersdorf
+DESM_DESL1092220,DESM_DEXX26400550,Prims muendet in Saar oberhalb Fremersdorf
+DESM_DEXX25800200,DESM_DEXX27100400,Lahn muendet in Rhein bei Lahnstein (naechster Rhein-Pegel: Andernach)
+DESM_DEBW4422,DESM_DEXX23800690,Enz muendet in Neckar bei Besigheim; unterhalb Wendlingen -> naechster Neckar-Pegel Rockenau
+DESM_DEBW3498,DESM_DEXX23800690,Kocher muendet in Neckar bei Bad Friedrichshall -> naechster Neckar-Pegel Rockenau
+DESM_DEBW212,DESM_DEXX24900108,Tauber muendet in Main bei Wertheim; unterhalb Wuerzburg -> naechster Main-Pegel Raunheim
+DESM_DEBY24409003,DESM_DEXX24900108,Fraenkische Saale muendet in Main bei Gemuenden -> naechster Main-Pegel Raunheim (von Reviewer empirisch bestaetigt A_inc >= 0; Wuerzburg als vorheriges Ziel war falsch)
+DESM_DEXX570940,DESM_DEXX502070,Saale muendet in Elbe bei Barby (Pegel Barby liegt direkt an/unterhalb der Muendung; von Reviewer empirisch bestaetigt A_inc >= 0)
+DESM_DEXX580790,DESM_DEXX503050,Untere Havel-Wasserstrasse (Havel) muendet in Elbe bei Havelberg -> naechster Elbe-Pegel Wittenberge
+DESM_DESN560021,DESM_DEXX502010,Vereinigte Mulde muendet in Elbe bei Dessau -> naechster Elbe-Pegel Aken
+DESM_DEST553060,DESM_DEXX501420,Schwarze Elster muendet in Elbe nahe Elster; nahe Lutherstadt Wittenberg -> Pegel Lutherstadt Wittenberg
+DESM_DEST591070,DESM_DEXX502350,Ohre muendet in Elbe bei Rogaetz; unterhalb Magdeburg -> naechster Elbe-Pegel Tangermuende
+DESM_DETH573110,DESM_DEXX570810,Unstrut muendet in Saale bei Naumburg; zwischen Camburg-Stoeben und Halle -> Halle Trotha UP
+DESM_DESN576631,DESM_DEXX570810,Weisse Elster muendet in Saale bei Halle-Planena -> naechster Saale-Pegel Halle Trotha UP (von Reviewer empirisch bestaetigt A_inc >= 0)
+DESM_DEST579070,DESM_DEXX570940,Bode muendet in Saale bei Nienburg; zwischen Bernburg und Calbe -> Calbe Grizehne
+DESM_DEST578600,DESM_DEXX570940,westl. Fuhne muendet in Saale bei Bernburg -> naechster Saale-Pegel Calbe Grizehne
+DESM_DETH572920,DESM_DEXX570810,Ilm (TH) muendet in Saale bei Bad Sulza; zwischen Camburg-Stoeben und Halle -> Halle Trotha UP
+DESM_DETH574210,DESM_DETH573110,Gera (TH) muendet in Unstrut bei Strausfurt; oberhalb Oldisleben
+DESM_DETH575110,DESM_DETH573110,Helbe muendet in Unstrut bei Bad Tennstedt; oberhalb Oldisleben
+DESM_DETH575240,DESM_DETH573110,Wipper (TH) muendet in Unstrut bei Bretleben; oberhalb Oldisleben
+DESM_DETH575400,DESM_DETH573110,Helme muendet in Unstrut bei Bretleben-Wiehe; oberhalb Oldisleben
+DESM_DEST575700,DESM_DETH575400,Thyra muendet in Helme bei Berga; oberhalb Sundhausen-Pegel (Zorge separat als Senke belassen; Kombination beider ergab negative Flaeche; siehe topologie-report.md)
+DESM_DESN567451,DESM_DESN560021,Zschopau muendet in Vereinigte Mulde bei Sermuth/Colditz
+DESM_DESN566040,DESM_DESN560021,Freiberger Mulde muendet in Vereinigte Mulde bei Sermuth
+DESM_DESN562115,DESM_DESN560021,Zwickauer Mulde muendet mit Freiberger Mulde zu Vereinigte Mulde bei Sermuth
+DESM_DESN568400,DESM_DESN567451,Schwarze Pockau muendet in Zschopau bei Zoeblitz
+DESM_DESN564400,DESM_DESN562115,Chemnitz (Fluss) muendet in Zwickauer Mulde bei Wechselburg
+DESM_DESN564620,DESM_DESN564400,Wuerschnitz muendet in Chemnitz (Fluss) in der Stadt Chemnitz
+DESM_DETH577510,DESM_DESN576631,Pleisse muendet in Weisse Elster bei Leipzig-Gruena; oberhalb Kleindalzig-Pegel
+DESM_DEBB6602600,DESM_DEXX603000,Lausitzer Neisse muendet in Oder bei Ratzdorf -> naechster Oder-Pegel Eisenhuettenstadt
+DESM_DEBB5871600,DESM_DEXX580790,Nuthe muendet in Havel bei Potsdam; oberhalb Havelberg-Pegel
+DESM_DEBB5873301,DESM_DEXX580790,Plane muendet in Havel bei Brandenburg/Havel; oberhalb Havelberg-Pegel
+DESM_DEBE5827700,DESM_DEXX580430,Spree muendet in Havel bei Spandau -> naechster Havel-Pegel Ketzin (von Reviewer empirisch bestaetigt A_inc >= 0; Havelberg als vorheriges Ziel war falsch)
+DESM_DEXX42900100,DESM_DEXX43100109,Fulda muendet mit Werra zu Weser bei Hann. Muenden (Pegel Hann. Muenden = erster Weser-Pegel)
+DESM_DEXX41900206,DESM_DEXX43100109,Werra muendet mit Fulda zu Weser bei Hann. Muenden (Pegel Letzter Heller liegt an der Muendung)
+DESM_DEXX48900204,DESM_DEXX49100101,Aller muendet in Weser bei Verden; zwischen Doerverden und Intschede -> Intschede
+DESM_DENW4670000000100,DESM_DEXX47500200,Werre muendet in Weser bei Bad Oeynhausen; nahe Vlotho -> naechster Weser-Pegel Liebenau
+DESM_DENW2766930000100,DESM_DEXX2770010,Lenne muendet in Ruhr bei Hagen; ohne Ruhr-Pegel unterhalb Hagen wird direkt an Rhein/Duisburg-Ruhrort angeschlossen (von Reviewer empirisch bestaetigt A_inc >= 0)
+DESM_DEBY15202300,DESM_DEXX10056302,Regen muendet in Donau bei Regensburg (nicht Deggendorf; siehe Fix-Runde 1) -> naechster Donau-Pegel Oberndorf statt Hofkirchen
+DESM_DEBW168,DESM_DEBY10039802,Beuron-Donauwoerth: gleicher Fluss (Donau-Oberlauf); Pegelabstand > 150 km (duenne Beguagung im Quellgebiet) -> Kante manuell wiederhergestellt
+DESM_DEBY11723504,DESM_DEBY10039802,Brenz muendet in Donau bei Niederstotzingen; oberhalb Donauwoerth-Pegel
+DESM_DEBY11584000,DESM_DEBY10039802,Guenz muendet in Donau bei Guenzburg; oberhalb Donauwoerth-Pegel
+DESM_DEBY11401009,DESM_DEBY10039802,Iller muendet in Donau bei Ulm; oberhalb Donauwoerth-Pegel
+DESM_DEBY11805008,DESM_DEBY10046105,Woernitz muendet in Donau direkt bei Donauwoerth -> naechster Donau-Pegel Ingolstadt
+DESM_DEBY14002305,DESM_DEXX10056302,Naab muendet in Donau bei Regensburg; zwischen Kelheim und Hofkirchen -> Oberndorf
+DESM_DEBY14209008,DESM_DEBY14002305,Haidenaab muendet in Naab bei Wernberg-Koeblitz; oberhalb Unterkoeblitz-Pegel
+DESM_DEBY14101205,DESM_DEBY14002305,Waldnaab muendet in Naab bei Wernberg-Koeblitz; oberhalb Unterkoeblitz-Pegel
+DESM_DEBY18642003,DESM_DEBY18606000,Saalach muendet in Salzach bei Freilassing; oberhalb Burghausen-Pegel
+DESM_DEBW461,DESM_DEXX23800690,Schwarzbach (BW; Eschelbronn) ist ein anderes Gewaesser als Schwarzbach (SL; Einoed) - Flussnamens-Kollision getrennt; muendet ueber Elsenz in Neckar -> naechster Neckar-Pegel Rockenau
+DESM_DESL1373130,DESM_DESL1062220,Schwarzbach (SL; Einoed) muendet in Blies bei Contwig/Zweibruecken; oberhalb Reinheim-Pegel
+DESM_DETH575250,DESM_DETH575240,Bode (TH; Bleicherode) ist ein anderes Gewaesser als Bode (ST/Harz; Hadmersleben) - Flussnamens-Kollision getrennt; muendet in Wipper (TH) bei Bleicherode -> Hachelbich-Pegel
+DESM_DEST579810,DESM_DEST591070,Grosser Graben muendet in Ohre bei Wolmirstedt-Umgebung -> Ohre-Pegel Wolmirstedt (von Reviewer empirisch bestaetigt A_inc >= 0)
+DESM_DEBY14608003,,Vils (Naab-System; Dietldorf) ist ein anderes Gewaesser als Vils (Donau-direkt bei Vilshofen; Grafenmuehle) - Flussnamens-Kollision getrennt (Distanz ~110 km < 150-km-Guard; manuell entkoppelt). Kein Naab-Pegel unterhalb Kallmuenz im Datensatz -> bewusste Senke
