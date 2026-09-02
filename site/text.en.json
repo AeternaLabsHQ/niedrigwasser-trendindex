@@ -158,7 +158,8 @@
   "methodik.grenzen.h3": "Limits",
   "methodik.grenzen.text": "The near-natural subset covers only ~13–16% of the area of the primary variant\n    and is geographically selective. It provides supporting evidence for the direction,\n    not a “truer” trend. Homogeneity flags (reservoirs, transfers, mining)\n    rest on documented but not exhaustive research. The series only begins\n    in 1992; a longer preceding period was not included. The analysis shows\n    robust trends, but no attribution of causes (climate, land use, water use).",
   "methodik.repro.h3": "Reproducibility",
-  "methodik.repro.text": "All figures on this page come unchanged from this project's analysis pipeline\n    (out/national_index.csv, out/station_trends.csv, out/sensitivity.csv,\n    data/interim/trend/). Method in detail: methods.md; results documentation:\n    docs/ergebnisse-phase4.md (references as file paths in the repository, no external links).",
+  "methodik.repro.text": "All figures on this page come unchanged from this project's analysis pipeline\n    (out/national_index.csv, out/station_trends.csv, out/sensitivity.csv,\n    data/interim/trend/). Method in detail: methods.md; results documentation:\n    docs/ergebnisse-phase4.md. The references are file paths in the public repository.",
+  "methodik.repro.cta": "Open the repository on GitHub ↗",
   "fuss.quelle": "\n  <span id=\"foot-meta\"></span> · Data source: NIWIS, operated by the Federal Institute of Hydrology (BfG) and the\n  Länderarbeitsgemeinschaft Wasser (LAWA); data licences per station held by the collecting\n  authorities.\n",
   "fuss.stand": "As of {datum} · water years {von}–{bis}",
   "__locale__": {

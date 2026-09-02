@@ -158,7 +158,8 @@
   "methodik.grenzen.h3": "Grenzen",
   "methodik.grenzen.text": "Die naturnahe Teilmenge deckt nur ~13–16&nbsp;% der Fläche der Primärvariante ab\n    und ist geografisch selektiv. Sie liefert richtungsbestätigende Zusatzevidenz,\n    keinen „wahreren“ Trend. Homogenitäts-Flags (Talsperren, Überleitung, Bergbau)\n    beruhen auf dokumentierter, aber nicht lückenloser Recherche. Die Reihe beginnt\n    erst 1992; eine längere Vorperiode wurde nicht einbezogen. Die Analyse zeigt\n    robuste Trends, aber keine Ursachen-Attribution (Klima, Landnutzung, Wassernutzung).",
   "methodik.repro.h3": "Reproduzierbarkeit",
-  "methodik.repro.text": "Alle Zahlen dieser Seite stammen unverändert aus der Analyse-Pipeline dieses Projekts\n    (out/national_index.csv, out/station_trends.csv, out/sensitivity.csv,\n    data/interim/trend/). Methodik im Detail: methods.md; Ergebnisdokumentation:\n    docs/ergebnisse-phase4.md (Verweise als Dateipfade im Repository, keine externen Links).",
+  "methodik.repro.text": "Alle Zahlen dieser Seite stammen unverändert aus der Analyse-Pipeline dieses Projekts\n    (out/national_index.csv, out/station_trends.csv, out/sensitivity.csv,\n    data/interim/trend/). Methodik im Detail: methods.md; Ergebnisdokumentation:\n    docs/ergebnisse-phase4.md. Die Verweise sind Dateipfade im öffentlichen Repository.",
+  "methodik.repro.cta": "Repository auf GitHub öffnen ↗",
   "fuss.quelle": "\n  <span id=\"foot-meta\"></span> · Datenquelle: NIWIS, betrieben von der Bundesanstalt für Gewässerkunde (BfG) und der\n  Länderarbeitsgemeinschaft Wasser (LAWA); Datenlizenzen je Station bei den erhebenden\n  Behörden.\n",
   "fuss.stand": "Stand {datum} · Wasserjahre {von}–{bis}",
   "__locale__": {

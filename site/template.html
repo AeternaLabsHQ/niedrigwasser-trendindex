@@ -294,6 +294,18 @@ svg text { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 .method p { break-inside: avoid; margin: 0 0 20px; }
 .method .src { font-size: 13px; color: var(--muted); }
 
+/* Verweis aufs oeffentliche Repository. Die Dateipfade im Absatz darueber
+   sind ohne Einstiegspunkt wertlos, deshalb steht er als Schaltflaeche und
+   nicht als Link im Fliesstext. */
+.repo-cta { margin: 0 0 20px; }
+.repo-cta a {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 14px; border: 1px solid var(--accent); border-radius: 8px;
+  color: var(--accent-ink); text-decoration: none; font-size: 14px;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+.repo-cta a:hover, .repo-cta a:focus-visible { background: var(--accent); color: var(--surface); }
+
 footer { border-top: 1px solid var(--hairline); margin-top: 48px; padding: 22px 0 40px; color: var(--muted); font-size: 13px; }
 
 /* Theme-Umschalter */
@@ -448,6 +460,7 @@ footer { border-top: 1px solid var(--hairline); margin-top: 48px; padding: 22px 
     <p data-i18n="methodik.grenzen.text"></p>
     <h3 data-i18n="methodik.repro.h3"></h3>
     <p class="src" data-i18n="methodik.repro.text"></p>
+    <p class="repo-cta"><a href="https://github.com/AeternaLabsHQ/niedrigwasser-trendindex" target="_blank" rel="noopener" data-i18n="methodik.repro.cta"></a></p>
   </div>
 </section>
 
